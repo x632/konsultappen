@@ -6,17 +6,25 @@
 //  Copyright © 2020 Andreas Svedstedt. All rights reserved.
 //
 
-import UIKit
-
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
+    import UIKit
+    import Firebase
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+    @UIApplicationMain
+    class AppDelegate: UIResponder, UIApplicationDelegate {
+
+      var window: UIWindow?
+
+      func application(_ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions:
+        [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        FirebaseApp.configure()
         return true
-    }
+      }
+    
+
+   
 
     // MARK: UISceneSession Lifecycle
 

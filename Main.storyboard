@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Registration-->
+        <scene sceneID="skU-pu-czA">
+            <objects>
+                <viewController storyboardIdentifier="inskrivning" modalTransitionStyle="crossDissolve" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ITA-cr-GOl" userLabel="Registration" customClass="Registration" customModule="Konsultappen" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gkg-od-g3p">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.45000000000000001" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock-1" translatesAutoresizingMaskIntoConstraints="NO" id="3lN-Qj-Emz">
+                                <rect key="frame" x="-47" y="489" width="508" height="333"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="333" id="z42-xj-f4T"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="kr/mil" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s4Z-jb-Ji8">
+                                <rect key="frame" x="90" y="161" width="234" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="234" id="aId-zB-Kef"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES" textContentType="postal-code"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="kr/restimme" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LVx-ii-EU7">
+                                <rect key="frame" x="90" y="222" width="234" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="234" id="YLx-EJ-pPY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES" textContentType="postal-code"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="kr/arbetad timme" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k6A-VN-wZS">
+                                <rect key="frame" x="90" y="283" width="234" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="234" id="wXf-t1-r3G"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES" textContentType="postal-code"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="kr/timme annan prissättning" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hp8-XZ-kAU">
+                                <rect key="frame" x="90" y="344" width="234" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="234" id="f0Z-In-0AM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES" textContentType="postal-code"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TzY-yX-5XA">
+                                <rect key="frame" x="125" y="403" width="164" height="51"/>
+                                <state key="normal" image="Component 5 – 1"/>
+                                <connections>
+                                    <action selector="SparaPressed:" destination="ITA-cr-GOl" eventType="touchUpInside" id="2fk-Wc-Sw2"/>
+                                    <segue destination="fzN-4E-3Gy" kind="show" identifier="toStartaResa" id="vox-K9-oEL"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Registrering" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xkw-Qy-zzB">
+                                <rect key="frame" x="48.5" y="74" width="317" height="47"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="317" id="REW-gz-Ncw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
+                                <color key="textColor" red="0.97436398270000002" green="0.9705656171" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.42508718369999998" green="0.22218161819999999" blue="0.75888770819999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="s4Z-jb-Ji8" firstAttribute="centerX" secondItem="gkg-od-g3p" secondAttribute="centerX" id="ALb-6N-xKc"/>
+                            <constraint firstItem="Hp8-XZ-kAU" firstAttribute="top" secondItem="k6A-VN-wZS" secondAttribute="bottom" constant="27" id="CoC-W5-i58"/>
+                            <constraint firstItem="LVx-ii-EU7" firstAttribute="centerX" secondItem="gkg-od-g3p" secondAttribute="centerX" id="DYg-RG-cM7"/>
+                            <constraint firstItem="xkw-Qy-zzB" firstAttribute="centerX" secondItem="gkg-od-g3p" secondAttribute="centerX" id="E32-iw-IUh"/>
+                            <constraint firstItem="Hp8-XZ-kAU" firstAttribute="centerX" secondItem="gkg-od-g3p" secondAttribute="centerX" id="F2m-hA-CGb"/>
+                            <constraint firstItem="xkw-Qy-zzB" firstAttribute="top" secondItem="9vE-GS-iy0" secondAttribute="top" constant="30" id="G5n-Io-Plx"/>
+                            <constraint firstItem="s4Z-jb-Ji8" firstAttribute="top" secondItem="xkw-Qy-zzB" secondAttribute="bottom" constant="40" id="JSG-hf-Noq"/>
+                            <constraint firstAttribute="trailing" secondItem="3lN-Qj-Emz" secondAttribute="trailing" constant="-47" id="OhJ-iu-ZCG"/>
+                            <constraint firstItem="TzY-yX-5XA" firstAttribute="top" secondItem="Hp8-XZ-kAU" secondAttribute="bottom" constant="25" id="RtR-zW-vhi"/>
+                            <constraint firstItem="k6A-VN-wZS" firstAttribute="top" secondItem="LVx-ii-EU7" secondAttribute="bottom" constant="27" id="d02-Vx-W4s"/>
+                            <constraint firstItem="k6A-VN-wZS" firstAttribute="centerX" secondItem="gkg-od-g3p" secondAttribute="centerX" id="d0M-ZV-CgY"/>
+                            <constraint firstItem="TzY-yX-5XA" firstAttribute="centerX" secondItem="gkg-od-g3p" secondAttribute="centerX" id="exN-rT-XSu"/>
+                            <constraint firstItem="9vE-GS-iy0" firstAttribute="bottom" secondItem="3lN-Qj-Emz" secondAttribute="bottom" constant="40" id="haX-CC-sSn"/>
+                            <constraint firstItem="3lN-Qj-Emz" firstAttribute="leading" secondItem="gkg-od-g3p" secondAttribute="leading" constant="-47" id="kqf-gV-ke5"/>
+                            <constraint firstItem="LVx-ii-EU7" firstAttribute="top" secondItem="s4Z-jb-Ji8" secondAttribute="bottom" constant="27" id="uu2-rh-ame"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="9vE-GS-iy0"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Rfq-dK-JWA"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="375" height="667"/>
+                    <connections>
+                        <outlet property="krPerArb" destination="k6A-VN-wZS" id="Tth-ca-A1R"/>
+                        <outlet property="krPerMil" destination="s4Z-jb-Ji8" id="2rk-DA-fHC"/>
+                        <outlet property="krPerRes" destination="LVx-ii-EU7" id="mve-9B-q9M"/>
+                        <outlet property="krPerTAnnan" destination="Hp8-XZ-kAU" id="Kwf-5n-ra1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q0v-Mw-sKL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-18380" y="108"/>
+        </scene>
+        <!--startaDitResan-->
+        <scene sceneID="suM-Rc-qYY">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="startaDitResan" storyboardName="Main" referencedIdentifier="startaDitResan" id="fzN-4E-3Gy" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BDy-v7-UsZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1617.3913043478262" y="137.27678571428569"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Component 5 – 1" width="164" height="51"/>
+        <image name="clock-1" width="396" height="264"/>
+    </resources>
+</document>

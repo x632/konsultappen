@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>247619712197-23i6vflhokp7ri376mr8f6gm7095appr.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.247619712197-23i6vflhokp7ri376mr8f6gm7095appr</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDZSM_9i-u3WEAqlN5xdInTN0oawkl04dY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>247619712197</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>Konsultappen.poema</string>
+	<key>PROJECT_ID</key>
+	<string>konsultappen-c889b</string>
+	<key>STORAGE_BUCKET</key>
+	<string>konsultappen-c889b.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:247619712197:ios:b54818e062f11435cdacac</string>
+	<key>DATABASE_URL</key>
+	<string>https://konsultappen-c889b.firebaseio.com</string>
+</dict>
+</plist>
