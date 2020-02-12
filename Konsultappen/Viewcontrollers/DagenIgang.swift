@@ -1,10 +1,11 @@
 //
-//  ViewController4.swift
+//  DagenIgang.swift
 //  Konsultappen
 //
-//  Created by Andreas Svedstedt on 2020-01-20.
+//  Created by Andreas Svedstedt on 2020-02-12.
 //  Copyright © 2020 Andreas Svedstedt. All rights reserved.
 //
+
 import UIKit
 
 class DagenIgang: UIViewController {

@@ -21,11 +21,15 @@ class Tableview: UIViewController, UITableViewDataSource, UITableViewDelegate{
     var restTid = 0
     var datum = ""
      var auth : Auth!
+    var minArray = [SparadDag]()
+      var minSArray : [String] = []
+    
+    
     
         override func viewDidLoad() {
             super.viewDidLoad()
            
-        
+        //plussar på tiderna, skapar
             for n in 0...(dagObject.count-1){
              
                 var b = ""
@@ -51,8 +55,6 @@ class Tableview: UIViewController, UITableViewDataSource, UITableViewDelegate{
             list.append("RESTID: \(restTid)min")
             list.append("ARBETAD TID: \(arbetadTid)min")
         
-            
-    
     }
           
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -66,15 +68,49 @@ class Tableview: UIViewController, UITableViewDataSource, UITableViewDelegate{
         }
     @IBAction func sparaTapped(_ sender: Any) {
          saveToFirestore()
-        performSegue(withIdentifier: "toSaved", sender: self)
     }
+       
+    // obs! ingen completion handler på sparaningen
     func saveToFirestore (){
         auth = Auth.auth()
         guard let user = auth.currentUser else { return }
         let db = Firestore.firestore()
         let itemRef = db.collection("users").document(user.uid).collection("dagar")
-        let sparadObj = SparadDag(datum : datum, arbetadTid : arbetadTid, restTid : restTid)
+        let sparadObj = SparadDag(datum : datum, arbetadTid : arbetadTid, restTid : restTid, timeStamp: Date())
         itemRef.addDocument(data: sparadObj.toDict())
+        getFromFirestore()
     }
-    
+    func getFromFirestore(){
+                    auth = Auth.auth()
+                    guard let user = auth.currentUser else { return }
+                    let db = Firestore.firestore()
+                    let itemRef = db.collection("users").document(user.uid).collection("dagar")
+                        itemRef.getDocuments { (snapshot, error) in
+                            if error == nil && snapshot != nil {
+                                for document in snapshot!.documents {
+                                    let datat = SparadDag(snapshot: document)
+                                    self.minArray.append(datat)
+                                    self.minSArray.append("\(datat.datum) Rest tid: \(datat.restTid) Arbetad tid: \(datat.arbetadTid)")
+        
+                                }
+                                self.showArray()
+                            }
+                        }
+        
+    }
+    func showArray(){
+       for a in minSArray {
+            print(a)
+        }
+        performSegue(withIdentifier: "toSaved", sender: self)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+         
+              if segue.identifier == "toSaved" {
+                  let destinationVC = segue.destination as! TableViewShowData
+                  destinationVC.minArray = minArray
+                  destinationVC.minSArray = minSArray
+               }
+    }
 }
+
