@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import FirebaseFirestoreSwift
 
 struct SparadDag {
     var datum : String
@@ -22,14 +23,15 @@ struct SparadDag {
         self.timeStamp = Date()
     }
     // en contructor som tar in ett firestore document och skapar ett object utifrån det
-      init(snapshot: QueryDocumentSnapshot) {
-          let snapshotValue = snapshot.data() as [String : Any]
-          datum = snapshotValue["datum"] as! String
-          arbetadTid = snapshotValue["arbetadTid"] as! Int
-          restTid = snapshotValue["restTid"] as! Int
-            timeStamp = Date()
-      }
-      
+    init(snapshot: QueryDocumentSnapshot) {
+        let snapshotValue = snapshot.data() as [String : Any]
+        datum = snapshotValue["datum"] as! String
+        arbetadTid = snapshotValue["arbetadTid"] as! Int
+        restTid = snapshotValue["restTid"] as! Int
+        let tS = snapshotValue["timeStamp"] as! Timestamp
+        timeStamp = tS.dateValue()
+    }
+    
 
       // gör om ett object till en dictionary som kan laddas upp på firestore
       func toDict() -> [String : Any] {

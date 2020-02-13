@@ -11,26 +11,29 @@ import Firebase
 import FirebaseFirestoreSwift
 
 class TableViewShowData: UIViewController, UITableViewDataSource, UITableViewDelegate{
-
-       var minArray : [SparadDag]!
-     var minSArray : [String]!
-     var auth : Auth!
-     
-             override func viewDidLoad() {
-                 super.viewDidLoad()
-     
-     }
+    
+    var minArray : [SparadDag]!
+    var minSArray : [String]!
+    var auth : Auth!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+        
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-               
-              return minSArray.count
+        
+        return minSArray.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "sparadDagCell")
+        
+        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "cell")
         cell.textLabel?.text = minSArray[indexPath.row]
-     print (minSArray[indexPath.row])
-        return (cell)
+        //print (minSArray[indexPath.row])
+         return (cell)
     }
+    
+   
+    
     /*
     // MARK: - Navigation
 

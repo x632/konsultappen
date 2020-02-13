@@ -70,47 +70,34 @@ class Tableview: UIViewController, UITableViewDataSource, UITableViewDelegate{
          saveToFirestore()
     }
        
-    // obs! ingen completion handler på sparaningen
+    // obs! ingen completion handler på sparningen - åtgärdat
     func saveToFirestore (){
         auth = Auth.auth()
         guard let user = auth.currentUser else { return }
         let db = Firestore.firestore()
         let itemRef = db.collection("users").document(user.uid).collection("dagar")
         let sparadObj = SparadDag(datum : datum, arbetadTid : arbetadTid, restTid : restTid, timeStamp: Date())
-        itemRef.addDocument(data: sparadObj.toDict())
-        getFromFirestore()
-    }
-    func getFromFirestore(){
-                    auth = Auth.auth()
-                    guard let user = auth.currentUser else { return }
-                    let db = Firestore.firestore()
-                    let itemRef = db.collection("users").document(user.uid).collection("dagar")
-                        itemRef.getDocuments { (snapshot, error) in
-                            if error == nil && snapshot != nil {
-                                for document in snapshot!.documents {
-                                    let datat = SparadDag(snapshot: document)
-                                    self.minArray.append(datat)
-                                    self.minSArray.append("\(datat.datum) Rest tid: \(datat.restTid) Arbetad tid: \(datat.arbetadTid)")
+        itemRef.addDocument(data: sparadObj.toDict()) { err in
+            if let err = err {
+                    print("Error adding document: \(err)")
+                } else {
+                    print("Document added!")
+                self.showArray()
+                }
+            }
         
-                                }
-                                self.showArray()
-                            }
-                        }
-        
-    }
+       
+       
+        }
+    
+ 
     func showArray(){
-       for a in minSArray {
+       for a in minArray {
             print(a)
         }
-        performSegue(withIdentifier: "toSaved", sender: self)
+        performSegue(withIdentifier: "toOvercome", sender: self)
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         
-              if segue.identifier == "toSaved" {
-                  let destinationVC = segue.destination as! TableViewShowData
-                  destinationVC.minArray = minArray
-                  destinationVC.minSArray = minSArray
-               }
-    }
+
 }
 
+//addDocument(data: sparadObj.toDict())
