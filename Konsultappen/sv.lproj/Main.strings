@@ -1,0 +1,141 @@
+
+/* Class = "UILabel"; text = "För att kunna beräkna hur mycket du kan fakturera och välja dagar att fakturera, krävs följande uppgifter. Dessa uppgifter sparas inte."; ObjectID = "1J8-fP-91b"; */
+"1J8-fP-91b.text" = "För att kunna beräkna hur mycket du kan fakturera och välja dagar att fakturera, krävs följande uppgifter. Dessa uppgifter sparas inte.";
+
+/* Class = "UITextField"; placeholder = "Kr / rest timme"; ObjectID = "5l8-bH-EZb"; */
+"5l8-bH-EZb.placeholder" = "Kr / rest timme";
+
+/* Class = "UILabel"; text = "Arbetade timmar:"; ObjectID = "9QV-eq-RdM"; */
+"9QV-eq-RdM.text" = "Arbetade timmar:";
+
+/* Class = "UILabel"; text = "Restimmar:"; ObjectID = "ALY-IX-V3D"; */
+"ALY-IX-V3D.text" = "Restimmar:";
+
+/* Class = "UILabel"; text = "Indata"; ObjectID = "AZw-3D-BTp"; */
+"AZw-3D-BTp.text" = "Indata";
+
+/* Class = "UIButton"; normalTitle = "Redan registrerat?"; ObjectID = "G6M-g8-UyH"; */
+"G6M-g8-UyH.normalTitle" = "Redan registrerat?";
+
+/* Class = "UILabel"; text = "Dagen är igång"; ObjectID = "GIV-F5-1bu"; */
+"GIV-F5-1bu.text" = "Dagen är igång";
+
+/* Class = "UIButton"; normalTitle = "Glömt trycka?"; ObjectID = "K6F-Vf-LlT"; */
+"K6F-Vf-LlT.normalTitle" = "Glömt trycka?";
+
+/* Class = "UILabel"; text = " Appen tar tid på resan tills du trycker på 'Framme'. Milersättning räknas ut med hjälp av GPS enligt angiven taxa. När du trycker 'Framme' påbörjas automatiskt arbetsdagens tidräkning."; ObjectID = "KPr-ji-CLN"; */
+"KPr-ji-CLN.text" = " Appen tar tid på resan tills du trycker på 'Framme'. Milersättning räknas ut med hjälp av GPS enligt angiven taxa. När du trycker 'Framme' påbörjas automatiskt arbetsdagens tidräkning.";
+
+/* Class = "UITextField"; placeholder = "e-post adress"; ObjectID = "KU3-XA-CYH"; */
+"KU3-XA-CYH.placeholder" = "e-post adress";
+
+/* Class = "UIButton"; normalTitle = "Se sparade poster"; ObjectID = "KZE-Vs-Tig"; */
+"KZE-Vs-Tig.normalTitle" = "Se sparade poster";
+
+/* Class = "UILabel"; text = "Text"; ObjectID = "Lpj-ay-H9V"; */
+"Lpj-ay-H9V.text" = "Text";
+
+/* Class = "UILabel"; text = "Paus"; ObjectID = "Ni4-aG-byM"; */
+"Ni4-aG-byM.text" = "Paus";
+
+/* Class = "UILabel"; text = "Hemresa"; ObjectID = "QeE-jm-BYi"; */
+"QeE-jm-BYi.text" = "Hemresa";
+
+/* Class = "UILabel"; text = "DATUM"; ObjectID = "R3L-YU-gXw"; */
+"R3L-YU-gXw.text" = "DATUM";
+
+/* Class = "UIButton"; normalTitle = "Vidare"; ObjectID = "V8j-6i-I5f"; */
+"V8j-6i-I5f.normalTitle" = "Vidare";
+
+/* Class = "UILabel"; text = "För att kunna skapa en molndatabas för din app, behövs din epostadress samt ett lösenord. Databasen kommer enbart att spara tidpunkter."; ObjectID = "VEu-Fw-736"; */
+"VEu-Fw-736.text" = "För att kunna skapa en molndatabas för din app, behövs din epostadress samt ett lösenord. Databasen kommer enbart att spara tidpunkter.";
+
+/* Class = "UILabel"; text = "Milersättning:"; ObjectID = "Vjl-Fm-0ZE"; */
+"Vjl-Fm-0ZE.text" = "Milersättning:";
+
+/* Class = "UITextField"; placeholder = "Kr / arbetad timme"; ObjectID = "YSc-6K-Bz4"; */
+"YSc-6K-Bz4.placeholder" = "Kr / arbetad timme";
+
+/* Class = "UITextField"; placeholder = "Kr / arbetad timme"; ObjectID = "YWJ-vb-Fjd"; */
+"YWJ-vb-Fjd.placeholder" = "Kr / arbetad timme";
+
+/* Class = "UIButton"; normalTitle = "Starta hemresa"; ObjectID = "Zpx-Jz-rUp"; */
+"Zpx-Jz-rUp.normalTitle" = "Starta hemresa";
+
+/* Class = "UITextField"; placeholder = "välj lösenord"; ObjectID = "aM7-lb-Ag0"; */
+"aM7-lb-Ag0.placeholder" = "välj lösenord";
+
+/* Class = "UITextField"; placeholder = "Kr / rest timme"; ObjectID = "dSk-0V-dMg"; */
+"dSk-0V-dMg.placeholder" = "Kr / rest timme";
+
+/* Class = "UILabel"; text = "Restiden är startad!"; ObjectID = "exW-51-uMn"; */
+"exW-51-uMn.text" = "Restiden är startad!";
+
+/* Class = "UILabel"; text = "Indata"; ObjectID = "gbc-y5-R8q"; */
+"gbc-y5-R8q.text" = "Indata";
+
+/* Class = "UIButton"; normalTitle = "Vidare"; ObjectID = "hfN-El-YiP"; */
+"hfN-El-YiP.normalTitle" = "Vidare";
+
+/* Class = "UITextField"; placeholder = "Kr / mil"; ObjectID = "jdp-T4-LfO"; */
+"jdp-T4-LfO.placeholder" = "Kr / mil";
+
+/* Class = "UIButton"; normalTitle = "Logga in"; ObjectID = "juF-Ru-Daf"; */
+"juF-Ru-Daf.normalTitle" = "Logga in";
+
+/* Class = "UIButton"; normalTitle = "Paus som ej faktureras"; ObjectID = "lX9-Pv-rON"; */
+"lX9-Pv-rON.normalTitle" = "Paus som ej faktureras";
+
+/* Class = "UILabel"; text = "Inloggning"; ObjectID = "lgs-I5-PNs"; */
+"lgs-I5-PNs.text" = "Inloggning";
+
+/* Class = "UIButton"; normalTitle = "Starta resa"; ObjectID = "mV2-ii-LsQ"; */
+"mV2-ii-LsQ.normalTitle" = "Starta resa";
+
+/* Class = "UILabel"; text = "Resa"; ObjectID = "nC8-QM-PxS"; */
+"nC8-QM-PxS.text" = "Resa";
+
+/* Class = "UILabel"; text = "Konsultappen"; ObjectID = "qbr-Zc-hbC"; */
+"qbr-Zc-hbC.text" = "Konsultappen";
+
+/* Class = "UILabel"; text = "Appen har nu stannat tidräkningen som räknas in i faktureringen. Tryck på 'Avsluta paus' för att fortsätta arbetstidsräkningen"; ObjectID = "sMV-W2-0fp"; */
+"sMV-W2-0fp.text" = "Appen har nu stannat tidräkningen som räknas in i faktureringen. Tryck på 'Avsluta paus' för att fortsätta arbetstidsräkningen";
+
+/* Class = "UIButton"; normalTitle = "Framme"; ObjectID = "tB6-ZY-Cd5"; */
+"tB6-ZY-Cd5.normalTitle" = "Framme";
+
+/* Class = "UIButton"; normalTitle = "Sign out"; ObjectID = "tKq-5i-pvO"; */
+"tKq-5i-pvO.normalTitle" = "Sign out";
+
+/* Class = "UIButton"; normalTitle = "Spara"; ObjectID = "u7h-v0-Jjr"; */
+"u7h-v0-Jjr.normalTitle" = "Spara";
+
+/* Class = "UITextField"; placeholder = "lösenord"; ObjectID = "uqY-x7-HpT"; */
+"uqY-x7-HpT.placeholder" = "lösenord";
+
+/* Class = "UILabel"; text = "Appen har nu avslutat tidräkning för 'arbetstid på plats' och påbörjat restidräkningen  och GPS för milersättningen. Tryck på 'Avsluta dagen' när du är framme"; ObjectID = "v6X-ZF-7tG"; */
+"v6X-ZF-7tG.text" = "Appen har nu avslutat tidräkning för 'arbetstid på plats' och påbörjat restidräkningen  och GPS för milersättningen. Tryck på 'Avsluta dagen' när du är framme";
+
+/* Class = "UITextField"; placeholder = "e-post adress"; ObjectID = "vn8-X9-gg1"; */
+"vn8-X9-gg1.placeholder" = "e-post adress";
+
+/* Class = "UILabel"; text = "Du har angivit fel uppgifter. Försök igen!"; ObjectID = "wLc-yW-FkM"; */
+"wLc-yW-FkM.text" = "Du har angivit fel uppgifter. Försök igen!";
+
+/* Class = "UIButton"; normalTitle = "Avsluta paus"; ObjectID = "wVi-HR-EnB"; */
+"wVi-HR-EnB.normalTitle" = "Avsluta paus";
+
+/* Class = "UIButton"; normalTitle = "Spara dag"; ObjectID = "wnU-uU-LpL"; */
+"wnU-uU-LpL.normalTitle" = "Spara dag";
+
+/* Class = "UILabel"; text = "Dina sparade dagar"; ObjectID = "x3L-0C-9eG"; */
+"x3L-0C-9eG.text" = "Dina sparade dagar";
+
+/* Class = "UILabel"; text = "Välkommen!"; ObjectID = "xdV-oG-6JH"; */
+"xdV-oG-6JH.text" = "Välkommen!";
+
+/* Class = "UILabel"; text = "Registrering"; ObjectID = "yG3-9b-AbB"; */
+"yG3-9b-AbB.text" = "Registrering";
+
+/* Class = "UIButton"; normalTitle = "Avsluta dagen"; ObjectID = "zjw-5Q-iB5"; */
+"zjw-5Q-iB5.normalTitle" = "Avsluta dagen";

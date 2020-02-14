@@ -16,14 +16,15 @@ class OvercomeAsyncVC: UIViewController {
     var minArray = [SparadDag]()
              var minSArray : [String] = []
              var auth : Auth!
-            
+            var klar = false
     override func viewDidLoad() {
     
               super.viewDidLoad()
                   getFromFirestore()
                  }
               
-          
+    
+    
         
           func getFromFirestore(){
               auth = Auth.auth()
@@ -41,7 +42,7 @@ class OvercomeAsyncVC: UIViewController {
                       }
                       print("min Array: ", self.minArray)
                       print("min SArray: ", self.minSArray)
-                      self.performSegue(withIdentifier: "toVisaData", sender: self)
+                    self.klar = true
                   }
               }
           }
@@ -52,9 +53,13 @@ class OvercomeAsyncVC: UIViewController {
          destVC.minSArray = minSArray
       }
     
-}
+    @IBAction func vidareTapped(_ sender: UIButton) {
+        if klar{
+     self.performSegue(withIdentifier: "toVisaData", sender: self)
+        }
+    }
     
-
+}
     
     
 

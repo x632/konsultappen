@@ -37,7 +37,7 @@ class Inloggning: UIViewController {
         password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         
         } else {
-            self.showError("You nned to fill in the fields!")
+            self.showError("You need to fill in the fields!")
                 return
             }
             

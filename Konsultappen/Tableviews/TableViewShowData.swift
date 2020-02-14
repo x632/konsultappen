@@ -15,6 +15,13 @@ class TableViewShowData: UIViewController, UITableViewDataSource, UITableViewDel
     var minArray : [SparadDag]!
     var minSArray : [String]!
     var auth : Auth!
+    var sammanlagdArbTid = 0
+    var sammanlagdResTid = 0
+    
+    
+    
+    @IBOutlet weak var ArbetadeTimmar: UILabel!
+    @IBOutlet weak var Restimmar: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -31,17 +38,49 @@ class TableViewShowData: UIViewController, UITableViewDataSource, UITableViewDel
         //print (minSArray[indexPath.row])
          return (cell)
     }
-    
-   
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let s=minArray![indexPath.row]
+        sammanlagdArbTid += (s.arbetadTid)
+        sammanlagdResTid += (s.restTid)
+        let a = makeHoursFormat(sammanlagdArbTid)
+        let b = makeHoursFormat(sammanlagdResTid)
+        ArbetadeTimmar.text = "Antal arbetstimmar (och minuter):  " + a
+        Restimmar.text = "Antal restimmar (och minuter): " + b
     }
-    */
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+         let s=minArray![indexPath.row]
+               sammanlagdArbTid -= (s.arbetadTid)
+               sammanlagdResTid -= (s.restTid)
+               let a = makeHoursFormat(sammanlagdArbTid)
+               let b = makeHoursFormat(sammanlagdResTid)
+               ArbetadeTimmar.text = "Antal arbetstimmar (och minuter): " + a
+               Restimmar.text = "Antal restimmar (och minuter): " + b
+    }
+   
+    func makeHoursFormat(_ a: Int) -> String{
+        var timmar = 0
+        var minuter = 0
+        if a > 59 {
+            timmar = Int(a / 60)
+            minuter = a % 60
+            }
+        else{minuter = a}
 
+        if minuter < 10 && timmar == 0 {
+                    return ("0:0\(minuter)")
+                
+                    }
+                    else if minuter > 9 && timmar == 0{
+                    return ("0:\(minuter)")
+                    }
+        if timmar > 0 && timmar < 10 && minuter > 9{
+            return ("\(timmar):\(minuter)")
+        }else if timmar > 0 && minuter < 10{
+            return ("\(timmar):0\(minuter)")
+        }
+       
+    return "!"
+    }
+    
+    
 }
