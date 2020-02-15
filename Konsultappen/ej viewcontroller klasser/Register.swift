@@ -2,9 +2,9 @@
 //  Register.swift
 //  Konsultappen
 //
-//  Created by Andreas Svedstedt on 2020-01-24.
+//  Created by Andreas Svedstedt on 2020-02-15.
 //  Copyright © 2020 Andreas Svedstedt. All rights reserved.
-//
+
 
 import Foundation
 struct Register {

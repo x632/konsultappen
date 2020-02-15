@@ -85,9 +85,6 @@ class Tableview: UIViewController, UITableViewDataSource, UITableViewDelegate{
                 self.showArray()
                 }
             }
-        
-       
-       
         }
     
  
