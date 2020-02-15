@@ -17,11 +17,14 @@ class TableViewShowData: UIViewController, UITableViewDataSource, UITableViewDel
     var auth : Auth!
     var sammanlagdArbTid = 0
     var sammanlagdResTid = 0
-    
+    var krPerMil : Int!
+    var krPerArbTim : Int!
+    var krPerResTim : Int!
     
     
     @IBOutlet weak var ArbetadeTimmar: UILabel!
     @IBOutlet weak var Restimmar: UILabel!
+    @IBOutlet weak var Summa: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -42,6 +45,8 @@ class TableViewShowData: UIViewController, UITableViewDataSource, UITableViewDel
         let s=minArray![indexPath.row]
         sammanlagdArbTid += (s.arbetadTid)
         sammanlagdResTid += (s.restTid)
+        let c = (Int(sammanlagdArbTid) * krPerArbTim) + (Int(sammanlagdResTid) * krPerResTim)
+               Summa.text = "Faktura summa exkl moms : \(c)"
         let a = makeHoursFormat(sammanlagdArbTid)
         let b = makeHoursFormat(sammanlagdResTid)
         ArbetadeTimmar.text = "Antal arbetstimmar (och minuter):  " + a
@@ -51,10 +56,15 @@ class TableViewShowData: UIViewController, UITableViewDataSource, UITableViewDel
          let s=minArray![indexPath.row]
                sammanlagdArbTid -= (s.arbetadTid)
                sammanlagdResTid -= (s.restTid)
+        let c = Int(sammanlagdArbTid) * krPerArbTim
+                      let d = Int(sammanlagdResTid) * krPerResTim
+                      let e = c+d
+              
+              Summa.text = "Faktura summa exkl moms : \(e)"
                let a = makeHoursFormat(sammanlagdArbTid)
                let b = makeHoursFormat(sammanlagdResTid)
                ArbetadeTimmar.text = "Antal arbetstimmar (och minuter): " + a
-               Restimmar.text = "Antal restimmar (och minuter): " + b
+               Restimmar.text = "Antal restimmar (och minuter): " + b               
     }
    
     func makeHoursFormat(_ a: Int) -> String{

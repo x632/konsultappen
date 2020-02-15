@@ -24,8 +24,12 @@ class OvercomeAsyncVC: UIViewController {
                  }
               
     
+    @IBOutlet weak var krPerArbTim: UITextField!
     
-        
+    @IBOutlet weak var krPerMil: UITextField!
+  
+    @IBOutlet weak var krPerResTim: UITextField!
+    
           func getFromFirestore(){
               auth = Auth.auth()
               guard let user = auth.currentUser else { return }
@@ -47,10 +51,27 @@ class OvercomeAsyncVC: UIViewController {
               }
           }
     
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         let destVC = segue.destination as! TableViewShowData
+   
+         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+              let mil : Int
+              let arb : Int
+              let res : Int
+              //let annan : Int
+              if let a = Int(krPerMil.text!){
+                  mil = a}
+              else {mil = 0}
+              if let a = Int(krPerArbTim.text!){
+                  arb = a}
+              else {arb = 0}
+              if let a = Int(krPerResTim.text!){
+                  res = a}
+              else {res = 0}
+        let destVC = segue.destination as! TableViewShowData
          destVC.minArray = minArray
          destVC.minSArray = minSArray
+        destVC.krPerArbTim = mil
+        destVC.krPerResTim = arb
+        destVC.krPerMil = res
       }
     
     @IBAction func vidareTapped(_ sender: UIButton) {
