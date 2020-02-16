@@ -23,11 +23,13 @@ class TableViewShowData: UIViewController, UITableViewDataSource, UITableViewDel
     var docIDArray : [String]!
     var selectArray : [Bool] = []
     
+
     @IBOutlet weak var ArbetadeTimmar: UILabel!
     
+   
     @IBOutlet weak var Restimmar: UILabel!
     
-    @IBOutlet weak var Summa: UILabel!
+    @IBOutlet weak var Summa: UILabel!    
  
     override func viewDidLoad() {
         super.viewDidLoad()
