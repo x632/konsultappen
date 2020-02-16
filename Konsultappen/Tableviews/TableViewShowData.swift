@@ -47,7 +47,6 @@ class TableViewShowData: UIViewController, UITableViewDataSource, UITableViewDel
         
         let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "cell")
         cell.textLabel?.text = minSArray[indexPath.row]
-        //print (minSArray[indexPath.row])
         return (cell)
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -58,14 +57,11 @@ class TableViewShowData: UIViewController, UITableViewDataSource, UITableViewDel
         sammanlagdArbTid += (s.arbetadTid)
         sammanlagdResTid += (s.restTid)
         selectArray[indexPath.row] = true
-        //c = avrundaMinuter(tid: sammanlagdArbTid)
-        //d = avrundaMinuter(tid: sammanlagdResTid)
-        //e = (c * Double(krPerArbTim)) + (d * Double(krPerResTim))
-        
+      
         c = (Double(sammanlagdResTid)) * ((Double(krPerResTim)/60))
         d = (Double(sammanlagdArbTid) * (Double(krPerArbTim)/60))
         e = c + d
-        let f = Double(round(100*e)/100)
+        let f = Int(e)
         Summa.text = "\(f)kr"
         let a = makeHoursFormat(sammanlagdArbTid)
         let b = makeHoursFormat(sammanlagdResTid)
@@ -80,14 +76,11 @@ class TableViewShowData: UIViewController, UITableViewDataSource, UITableViewDel
         sammanlagdArbTid -= (s.arbetadTid)
         sammanlagdResTid -= (s.restTid)
         selectArray[indexPath.row] = false
-        //c = avrundaMinuter(tid: sammanlagdArbTid)
-        //d = avrundaMinuter(tid: sammanlagdResTid)
-        //e = (c * Double(krPerArbTim)) + (d * Double(krPerResTim))
-        //e = (Double(sammanlagdResTid) * (krPerResTim/60)) + (Double(sammanlagdArbTid)*(krPerArbTim/60))
+       
         c = (Double(sammanlagdResTid)) * ((Double(krPerResTim)/60))
         d = (Double(sammanlagdArbTid) * (Double(krPerArbTim)/60))
         e = c + d
-        let f = Double(round(100*e)/100)
+        let f = Double(round(1*e)/1)
         Summa.text = "\(f)kr"
         let a = makeHoursFormat(sammanlagdArbTid)
         let b = makeHoursFormat(sammanlagdResTid)
@@ -111,37 +104,34 @@ class TableViewShowData: UIViewController, UITableViewDataSource, UITableViewDel
             return ("\(timmar):\(minuter)")
         }
     }
-    
-    func avrundaMinuter(tid :Int)->Double{
-        // räkna ut så att minuter avrundas till 4:dedelstimmar och att detta adderas till timmar, returnera.
-        var minutTillTimme = 0.0
-        var timmar = 0
-        var minuter = 0
-        var avrTimMinuter = 0.0
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
+        minSArray.remove(at: indexPath.row)
+        minArray.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .fade)
         
-        minuter = tid % 60
-        if minuter < 8 && minuter >= 0{
-            minutTillTimme = 0
+        auth = Auth.auth()
+        guard let user = auth.currentUser else { return }
+        let db = Firestore.firestore()
+    db.collection("users").document(user.uid).collection("dagar").document(docIDArray[indexPath.row]).delete() { err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                print("Document successfully removed from cloud")
+            }
         }
-        if minuter < 23 && minuter > 7 {
-            minutTillTimme = 0.25
-        }
-        if minuter > 22 && minuter < 38 {
-            minutTillTimme = 0.5
-        }
-        if minuter > 37 && minuter < 53 {
-            minutTillTimme = 0.75
-        }
-        if minuter > 52 {
-            minutTillTimme = 1.0
-        }
-        timmar = Int(tid / 60) // om det finns timmar så extraheras de här
-        avrTimMinuter = Double(timmar) + minutTillTimme
         
-        return avrTimMinuter
+        
+        
+        
+        }
     }
+
+   
+    @IBAction func raderaTapped(_ sender: Any) {
     
     
+    }
 }
 
 
