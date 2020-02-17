@@ -118,6 +118,7 @@ class TableViewShowData: UIViewController, UITableViewDataSource, UITableViewDel
                 print("Error removing document: \(err)")
             } else {
                 print("Document successfully removed from cloud")
+                self.docIDArray.remove(at:indexPath.row)
             }
         }
         
