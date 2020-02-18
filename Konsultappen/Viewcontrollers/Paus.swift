@@ -13,15 +13,14 @@ class Paus: UIViewController {
       
     var startTime : Date!
     var endTime : Date?
-    var calendar : Calendar!
+    //var calendar : Calendar!
     var dagObject : Dag!
    override func viewDidLoad() {
                super.viewDidLoad()
     }
     @IBAction func avslutaPausTapped(_ sender: UIButton) {
            endTime = Date()
-                let entry = TimePost(startTime: startTime, endTime: endTime!, calendar: calendar, namn: "Paus")
-             
+                let entry = TimePost(startTime: startTime, endTime: endTime!, namn: "Paus")
                 dagObject.add(entry: entry)
                 
         let a = dagObject.entries[dagObject.count-1]
@@ -32,7 +31,6 @@ class Paus: UIViewController {
         if segue.identifier == "backToDagenIgang"{
             let destinationVC = segue.destination as! DagenIgang
             destinationVC.startTime = endTime
-            destinationVC.calendar = calendar
             destinationVC.dagObject = dagObject
         }
     }

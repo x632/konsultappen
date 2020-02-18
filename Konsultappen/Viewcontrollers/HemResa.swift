@@ -12,7 +12,6 @@ import UIKit
 class HemResa: UIViewController {
  
     var startTime : Date!
-    var calendar : Calendar!
     var endTime : Date?
     var dagObject : Dag!
     
@@ -22,7 +21,7 @@ override func viewDidLoad() {
    }
     @IBAction func avslutaDagenTapped(_ sender: Any) {
     endTime = Date()
-          let entry = TimePost(startTime: startTime, endTime: endTime!, calendar: calendar,namn: "Resa")
+          let entry = TimePost(startTime: startTime, endTime: endTime!,namn: "Resa")
           dagObject.add(entry: entry)
           
         let a = dagObject.entries[dagObject.count-1]

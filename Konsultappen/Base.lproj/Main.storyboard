@@ -170,7 +170,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wnU-uU-LpL">
-                                <rect key="frame" x="-54" y="741" width="522" height="96"/>
+                                <rect key="frame" x="76.5" y="789" width="261" height="48"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="30"/>
                                 <state key="normal" title="Lagra dag" backgroundImage="Component 13 – 1">
                                     <color key="titleColor" red="0.28394839170000002" green="0.27284565570000002" blue="0.2727301419" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -913,6 +913,7 @@
         <image name="clock-3179167_960_720 (kopia)-1" width="412" height="274"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="rwm-T6-b71"/>
         <segue reference="gwc-ts-jkS"/>
         <segue reference="8CK-Ot-md7"/>
         <segue reference="fPd-Kr-5Vp"/>

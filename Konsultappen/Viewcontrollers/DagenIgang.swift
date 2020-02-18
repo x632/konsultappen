@@ -11,7 +11,6 @@ import UIKit
 class DagenIgang: UIViewController {
     
     var startTime : Date!
-    var calendar : Calendar!
     var endTime : Date?
     var dagObject : Dag!
     override func viewDidLoad() {
@@ -25,19 +24,17 @@ class DagenIgang: UIViewController {
         
         if segue.identifier == "dagenToPaus" || segue.identifier == "toHemresa"{
                 dagObject = createObject()
-            calendar = Calendar.current
+            
             startTime = Date()
             
             if segue.identifier == "dagenToPaus"{
                 let destinationVC = segue.destination as! Paus
                 destinationVC.startTime = startTime
-                destinationVC.calendar = calendar
                 destinationVC.dagObject = dagObject
             }
             else{
                 let destinationVC = segue.destination as! HemResa
                 destinationVC.startTime = startTime
-                destinationVC.calendar = calendar
                 destinationVC.dagObject = dagObject
             }
         }
@@ -46,7 +43,7 @@ class DagenIgang: UIViewController {
     }
     func createObject() -> Dag{
            endTime = Date()
-       let entry = TimePost(startTime: startTime, endTime: endTime!, calendar: calendar,namn: "Arbetad tid")
+       let entry = TimePost(startTime: startTime, endTime: endTime!,namn: "Arbetad tid")
              dagObject.add(entry: entry)
              
         let a = dagObject.entries[dagObject.count-1]

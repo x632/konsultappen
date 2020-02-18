@@ -11,7 +11,7 @@ struct TimePost {
     
     var startTime : Date
     var endTime: Date
-    var calendar : Calendar
+    //var calendar = Calendar.current
     var namn : String?
     var duration : Int!
     
@@ -20,12 +20,14 @@ struct TimePost {
     var formEndTime : String?
     var count : Int = -1
     var justDate : String?
+   
      
-    init (startTime: Date, endTime: Date, calendar: Calendar, namn: String) {
+    init (startTime: Date, endTime: Date, namn: String) {
         self.startTime = startTime
         self.endTime = endTime
-        self.calendar = calendar
+        //self.calendar = calendar
         self.namn = namn
+        let calendar = Calendar.current
         self.duration = calendar.dateComponents([.second], from: startTime, to: endTime).second
         dateFormatter.dateFormat = "HH:mm:ss"
         self.formStartTime = dateFormatter.string(from: startTime)

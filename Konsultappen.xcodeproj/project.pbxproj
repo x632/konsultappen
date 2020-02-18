@@ -26,6 +26,7 @@
 		D8282ADC23D1FFFE00859973 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8282ADA23D1FFFE00859973 /* LaunchScreen.storyboard */; };
 		D8282AE723D1FFFE00859973 /* KonsultappenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8282AE623D1FFFE00859973 /* KonsultappenTests.swift */; };
 		D8282AF223D1FFFE00859973 /* KonsultappenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8282AF123D1FFFE00859973 /* KonsultappenUITests.swift */; };
+		D84AAB9A23FC0DB7004E4C7D /* Tidpunkt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84AAB9923FC0DB7004E4C7D /* Tidpunkt.swift */; };
 		D8B5F61223F5995A00EB3A4E /* OvercomeAsyncVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B5F61123F5995A00EB3A4E /* OvercomeAsyncVC.swift */; };
 		D8C3047F23D8C02F00FE0EB5 /* StartaResa.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C3047E23D8C02F00FE0EB5 /* StartaResa.swift */; };
 		D8C3048323D8C8E200FE0EB5 /* Paus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C3048223D8C8E200FE0EB5 /* Paus.swift */; };
@@ -84,6 +85,7 @@
 		D8282AED23D1FFFE00859973 /* KonsultappenUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KonsultappenUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8282AF123D1FFFE00859973 /* KonsultappenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KonsultappenUITests.swift; sourceTree = "<group>"; };
 		D8282AF323D1FFFE00859973 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D84AAB9923FC0DB7004E4C7D /* Tidpunkt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tidpunkt.swift; sourceTree = "<group>"; };
 		D8B5F61123F5995A00EB3A4E /* OvercomeAsyncVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvercomeAsyncVC.swift; sourceTree = "<group>"; };
 		D8C3047E23D8C02F00FE0EB5 /* StartaResa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartaResa.swift; sourceTree = "<group>"; };
 		D8C3048223D8C8E200FE0EB5 /* Paus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paus.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				D80F2D6323DC42AA00CC9049 /* Dag.swift */,
 				D8E138A023EEDCD600845449 /* Reg.swift */,
 				D8E7F8D623F8171E0036DE36 /* Register.swift */,
+				D84AAB9923FC0DB7004E4C7D /* Tidpunkt.swift */,
 			);
 			path = "ej viewcontroller klasser";
 			sourceTree = "<group>";
@@ -516,6 +519,7 @@
 				D81F776123EDA70C0015C64B /* RegAuth.swift in Sources */,
 				D80F2D6423DC42AA00CC9049 /* Dag.swift in Sources */,
 				D8282AD223D1FFFC00859973 /* SceneDelegate.swift in Sources */,
+				D84AAB9A23FC0DB7004E4C7D /* Tidpunkt.swift in Sources */,
 				D8C3048323D8C8E200FE0EB5 /* Paus.swift in Sources */,
 				D8C3048523D8DBD500FE0EB5 /* AvslutaResa.swift in Sources */,
 				D8FEE48C23E456B8003BFBCD /* Tableview.swift in Sources */,
