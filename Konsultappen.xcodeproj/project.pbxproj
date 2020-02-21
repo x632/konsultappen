@@ -214,9 +214,9 @@
 			children = (
 				D8C3047E23D8C02F00FE0EB5 /* StartaResa.swift */,
 				D8C3048423D8DBD500FE0EB5 /* AvslutaResa.swift */,
+				D814CD9523F443F000C7609B /* DagenIgang.swift */,
 				D8C3048223D8C8E200FE0EB5 /* Paus.swift */,
 				D80F2D6523DC64E700CC9049 /* HemResa.swift */,
-				D814CD9523F443F000C7609B /* DagenIgang.swift */,
 				D8B5F61123F5995A00EB3A4E /* OvercomeAsyncVC.swift */,
 			);
 			path = Viewcontrollers;

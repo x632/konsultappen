@@ -24,11 +24,23 @@ class Tableview: UIViewController, UITableViewDataSource, UITableViewDelegate{
     var minArray = [SparadDag]()
       var minSArray : [String] = []
     var testArray: [TimePost]!
+    var docID : [String]!
+    var kommitVanligaVagen = true
     
         override func viewDidLoad() {
             super.viewDidLoad()
-           
-            
+         
+                  auth = Auth.auth()
+                  let db = Firestore.firestore()
+                  guard let user = auth.currentUser else { return }
+            db.collection("users").document(user.uid).collection("tidpunkt").document("from").setData(["from" : "tableview"])
+            { err in
+                if let err = err {
+                    print("Error writing document: \(err)")
+                } else {
+                    print("Document successfully written!")
+                }
+            }
             
             for n in 0...(testArray.count-1){
                  var b = ""
@@ -49,33 +61,7 @@ class Tableview: UIViewController, UITableViewDataSource, UITableViewDelegate{
                                 titleLabel?.text = datum
                                
             }
-            
-            
-            
-            
-       
-//
-//                var b = ""
-//                let a = dagObject.entries[n]
-//                if "\(a.namn!)" == "Paus"{
-//                b = ("\(a.namn!)")
-//                } else{
-//                b = ("\(a.namn!) \(a.formStartTime!) - \(a.formEndTime!)")
-//                }
-//                if "\(a.namn!)" == "Arbetstid"{
-//                    arbetadTid += a.duration!
-//                }
-//                if "\(a.namn!)" == "Resa"{
-//                    restTid += a.duration!
-//                }
-//                datum = a.justDate!
-//                list.append(b)
-//                titleLabel?.text = datum
-//                datum = testArray[n].justDate!
-//                list.append(b)
-//                 titleLabel?.text = datum
                
-            //}
            list.append("***************************")
             list.append("RESTID: \(restTid)min")
             list.append("ARBETAD TID: \(arbetadTid)min")
@@ -111,6 +97,13 @@ class Tableview: UIViewController, UITableViewDataSource, UITableViewDelegate{
                 }
             }
         }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+          if segue.identifier == "toOvercome" {
+                   let destinationVC = segue.destination as! OvercomeAsyncVC
+                   destinationVC.docID = docID
+                destinationVC.kommitVanligaVagen = kommitVanligaVagen
+              }
+    }
     
  
     func showArray(){

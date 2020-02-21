@@ -12,13 +12,31 @@ import FirebaseFirestoreSwift
 
 class DagenIgang: UIViewController {
     
-    var startTime : Date!
+    var startTime : Date?
     var endTime : Date?
     var auth: Auth!
+    var a = ""
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+    }
+    @IBAction func pausTapped(_ sender: UIButton) {
+        getFromFirestore(b: true )
+    }
+    
+    @IBAction func startaHemresaTapped(_ sender: UIButton) {
+        getFromFirestore(b: false)
+    }
+    
+    
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        createFirestoreTimePostObject()
+        startTime = Date()
         auth = Auth.auth()
         let db = Firestore.firestore()
         guard let user = auth.currentUser else { return }
@@ -30,33 +48,20 @@ class DagenIgang: UIViewController {
                 print("Document successfully written!")
             }
         }
-        
-    }
-    @IBAction func pausTapped(_ sender: UIButton) {
-        getFromFirestore(a: true )
-    }
-    
-    @IBAction func startaHemresaTapped(_ sender: UIButton) {
-      getFromFirestore(a: false)
-    }
-  
-    
-    
-    
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if segue.identifier == "dagenToPaus" {
-            createFirestoreTimePostObject()
-            let destinationVC = segue.destination as! Paus
-            destinationVC.startTime = endTime
+            a = "Paus"
+        }else{
+            a = "Hemresa"
         }
-        else{
-            createFirestoreTimePostObject()
-            let destinationVC = segue.destination as! HemResa
-            destinationVC.startTime = endTime
-           
+        db.collection("users").document(user.uid).collection("tidpunkt").document("from").setData(["from" : "\(a)"])
+        { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+            }
         }
+      
     }
     func createFirestoreTimePostObject(){
         endTime = Date()
@@ -76,7 +81,7 @@ class DagenIgang: UIViewController {
             }
         }
     }
-    func getFromFirestore( a: Bool) {
+    func getFromFirestore( b: Bool) {
         auth = Auth.auth()
         let db = Firestore.firestore()
         
@@ -91,7 +96,7 @@ class DagenIgang: UIViewController {
                     let ts = documentData!["tidpunkt"] as! Timestamp
                     self.startTime = ts.dateValue()
                     print("Document succefully read from cloud: \(self.startTime!)")
-                    if a {
+                    if b {
                         self.performSegue(withIdentifier: "dagenToPaus", sender: self)
                     } else {
                         self.performSegue(withIdentifier: "toHemresa", sender: self)

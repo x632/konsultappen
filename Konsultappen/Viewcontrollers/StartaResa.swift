@@ -14,7 +14,7 @@ class StartaResa: UIViewController {
     var auth: Auth!
     var startTime: Date?
     var GPS : [Int]? = [1,2,3]
-    var namn : String?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,15 +22,38 @@ class StartaResa: UIViewController {
     
     @IBAction func startaResaPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "toAvslutaResa", sender: self)
-    }
         
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        startTime = Date()
+    }
+    
+    @IBAction func seSparadePosterTap(_ sender: UIButton) {
+        performSegue(withIdentifier: "toData", sender: self)
+    }
+    override func prepare(for segue:
+        
+        UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toAvslutaResa" {
-            let destinationVC = segue.destination as! AvslutaResa
-            destinationVC.startTime = startTime
-            destinationVC.GPS = GPS
+            startTime = Date()
+            auth = Auth.auth()
+            let db = Firestore.firestore()
+            guard let user = auth.currentUser else { return }
+            db.collection("users").document(user.uid).collection("tidpunkt").document("tid").setData(["tidpunkt" : startTime!])
+            { err in
+                if let err = err {
+                    print("Error writing document: \(err)")
+                } else {
+                    print("Document 'tidpunkt' successfully written!")
+                }
+            }
+            db.collection("users").document(user.uid).collection("tidpunkt").document("from").setData(["from" : "AvslutaResa"])
+            { err in
+                if let err = err {
+                    print("Error writing document: \(err)")
+                } else {
+                    print("Document successfully written!")
+                }
+            }
         }
     }
 }
+
 

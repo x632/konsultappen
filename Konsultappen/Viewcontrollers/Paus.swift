@@ -14,33 +14,15 @@ import FirebaseFirestoreSwift
 class Paus: UIViewController {
     
     var auth: Auth!
-    var startTime : Date!
+    var startTime : Date?
     var endTime : Date?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        auth = Auth.auth()
-        let db = Firestore.firestore()
-        guard let user = auth.currentUser else { return }
-        db.collection("users").document(user.uid).collection("tidpunkt").document("tid").setData(["tidpunkt" : startTime!])
-        { err in
-            if let err = err {
-                print("Error writing document: \(err)")
-            } else {
-                print("Document successfully written!")
-            }
-        }
+   
     }
     @IBAction func avslutaPausTapped(_ sender: UIButton) {
         getFromFirestore()
-        
-        //        let entry = TimePost(startTime: startTime, endTime: endTime!, namn: "Paus")
-        //        dagObject.add(entry: entry)
-        //
-        //        let a = dagObject.entries[dagObject.count-1]
-        //        print ("Typ: \(a.namn!) Starttid: \(a.formStartTime!) Sluttid: \(a.formEndTime!) sekunder: \(a.duration!)")
-        
-       
         
     }
     func getFromFirestore() {
@@ -65,12 +47,28 @@ class Paus: UIViewController {
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         createFirestoreTimePostObject()
-        if segue.identifier == "backToDagenIgang" {
-        let destinationVC = segue.destination as! DagenIgang
-        destinationVC.startTime = endTime
-    
-        }
+        startTime = Date()
+           auth = Auth.auth()
+           let db = Firestore.firestore()
+           guard let user = auth.currentUser else { return }
+           db.collection("users").document(user.uid).collection("tidpunkt").document("tid").setData(["tidpunkt" : startTime!])
+           { err in
+               if let err = err {
+                   print("Error writing document: \(err)")
+               } else {
+                   print("Document successfully written!")
+               }
+               db.collection("users").document(user.uid).collection("tidpunkt").document("from").setData(["from" : "DagenIgang"])
+               { err in
+                   if let err = err {
+                       print("Error writing document: \(err)")
+                   } else {
+                       print("Document successfully written!")
+                   }
+               }
+           }
     }
+    
     func createFirestoreTimePostObject(){
         endTime = Date()
         auth = Auth.auth()

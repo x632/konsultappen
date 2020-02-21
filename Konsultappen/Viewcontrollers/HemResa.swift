@@ -13,44 +13,30 @@ import FirebaseFirestoreSwift
 
 class HemResa: UIViewController {
     
-    var dagObject : Dag?
-    var startTime : Date!
+    //var dagObject : Dag?
+    var startTime : Date?
     var endTime : Date?
     var auth: Auth!
     //var minArray = [SparadDag]()
     var minSArray : [String] = []
-    var docIDArray : [String] = []
+    var docID : [String] = []
     var testArray = [TimePost]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        auth = Auth.auth()
-        let db = Firestore.firestore()
-        guard let user = auth.currentUser else { return }
-        db.collection("users").document(user.uid).collection("tidpunkt").document("tid").setData(["tidpunkt" : startTime!])
-        { err in
-            if let err = err {
-                print("Error writing document: \(err)")
-            } else {
-                print("Document 'tidpunkt' successfully written!")
-            }
-        }
-        // Do any additional setup after loading the view.
+        getFromFirestore()
     }
     
     @IBAction func avslutaDagenTapped(_ sender: Any) {
-        getFromFirestore() //ta startpunkt från firestore
+        self.createFirestoreTimePostObject() //ta startpunkt från firestore
     }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-            print ("från prepare for segue")
-        
-        
         if segue.identifier == "toTableview" {
              let destinationVC = segue.destination as! Tableview
-             destinationVC.dagObject = dagObject
+             destinationVC.docID = docID
             destinationVC.testArray = testArray
         }
         
@@ -91,8 +77,7 @@ class HemResa: UIViewController {
                      
                     let datat = TimePost(snapshot: document)
                     self.testArray.append(datat)
-                    //self.dagObject = self.createObject(timepost: datat)
-                    //self.docIDArray.append(document.documentID)
+                    self.docID.append(document.documentID)
                 
                 }
                 print(self.testArray)
@@ -116,24 +101,13 @@ class HemResa: UIViewController {
                     let ts = documentData!["tidpunkt"] as! Timestamp
                     self.startTime = ts.dateValue()
                     print("Document succefully read: \(self.startTime!)")
-                    self.createFirestoreTimePostObject()
+                   
                 }
             }
         }
     }
-        
-//    func createObject(timepost: TimePost) -> Dag{
-//
-//
-//            let entry = timepost
-//            var dagObject = Dag()
-//            dagObject.add(entry: entry)
-//
-//           let a = dagObject.entries[dagObject.count-1]
-//            print ("från createobject Typ: \(a.namn!) Starttid: \(a.formStartTime!) Sluttid: \(a.formEndTime!) Sekunder: \(a.duration!)")
-////
-//            return dagObject
-//            }
+    
+
    
         
         

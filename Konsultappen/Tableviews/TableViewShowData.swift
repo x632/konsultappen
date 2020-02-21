@@ -119,6 +119,8 @@ class TableViewShowData: UIViewController, UITableViewDataSource, UITableViewDel
             } else {
                 print("Document successfully removed from cloud")
                 self.docIDArray.remove(at:indexPath.row)
+                self.sammanlagdArbTid = 0
+                self.sammanlagdResTid = 0
             }
         }
         
