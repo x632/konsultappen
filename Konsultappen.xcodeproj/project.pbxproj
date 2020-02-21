@@ -31,10 +31,7 @@
 		D8C3047F23D8C02F00FE0EB5 /* StartaResa.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C3047E23D8C02F00FE0EB5 /* StartaResa.swift */; };
 		D8C3048323D8C8E200FE0EB5 /* Paus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C3048223D8C8E200FE0EB5 /* Paus.swift */; };
 		D8C3048523D8DBD500FE0EB5 /* AvslutaResa.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C3048423D8DBD500FE0EB5 /* AvslutaResa.swift */; };
-		D8C720DB23D3096100C1EFF0 /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C720DA23D3096100C1EFF0 /* Registration.swift */; };
 		D8E1389D23EEB12200845449 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8E1389C23EEB12200845449 /* GoogleService-Info.plist */; };
-		D8E138A123EEDCD600845449 /* Reg.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E138A023EEDCD600845449 /* Reg.swift */; };
-		D8E7F8D723F8171E0036DE36 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E7F8D623F8171E0036DE36 /* Register.swift */; };
 		D8FEE48C23E456B8003BFBCD /* Tableview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FEE48B23E456B8003BFBCD /* Tableview.swift */; };
 /* End PBXBuildFile section */
 
@@ -90,10 +87,7 @@
 		D8C3047E23D8C02F00FE0EB5 /* StartaResa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartaResa.swift; sourceTree = "<group>"; };
 		D8C3048223D8C8E200FE0EB5 /* Paus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paus.swift; sourceTree = "<group>"; };
 		D8C3048423D8DBD500FE0EB5 /* AvslutaResa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvslutaResa.swift; sourceTree = "<group>"; };
-		D8C720DA23D3096100C1EFF0 /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
 		D8E1389C23EEB12200845449 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		D8E138A023EEDCD600845449 /* Reg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reg.swift; sourceTree = "<group>"; };
-		D8E7F8D623F8171E0036DE36 /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
 		D8FEE48B23E456B8003BFBCD /* Tableview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tableview.swift; sourceTree = "<group>"; };
 		F8A7330F65E141FD4254C37C /* Pods-KonsultappenTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KonsultappenTests.release.xcconfig"; path = "Target Support Files/Pods-KonsultappenTests/Pods-KonsultappenTests.release.xcconfig"; sourceTree = "<group>"; };
 		FF662307D6F38D9551C54EE7 /* Pods-Konsultappen-KonsultappenUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Konsultappen-KonsultappenUITests.debug.xcconfig"; path = "Target Support Files/Pods-Konsultappen-KonsultappenUITests/Pods-Konsultappen-KonsultappenUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -210,8 +204,6 @@
 				D81041DC23DF17C100C0AD7E /* TimePost.swift */,
 				D80D9C4E23F0045C00631DC9 /* SparadDag.swift */,
 				D80F2D6323DC42AA00CC9049 /* Dag.swift */,
-				D8E138A023EEDCD600845449 /* Reg.swift */,
-				D8E7F8D623F8171E0036DE36 /* Register.swift */,
 				D84AAB9923FC0DB7004E4C7D /* Tidpunkt.swift */,
 			);
 			path = "ej viewcontroller klasser";
@@ -224,7 +216,6 @@
 				D8C3048423D8DBD500FE0EB5 /* AvslutaResa.swift */,
 				D8C3048223D8C8E200FE0EB5 /* Paus.swift */,
 				D80F2D6523DC64E700CC9049 /* HemResa.swift */,
-				D8C720DA23D3096100C1EFF0 /* Registration.swift */,
 				D814CD9523F443F000C7609B /* DagenIgang.swift */,
 				D8B5F61123F5995A00EB3A4E /* OvercomeAsyncVC.swift */,
 			);
@@ -504,13 +495,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D81041DD23DF17C100C0AD7E /* TimePost.swift in Sources */,
-				D8E7F8D723F8171E0036DE36 /* Register.swift in Sources */,
 				D80F2D6623DC64E700CC9049 /* HemResa.swift in Sources */,
-				D8E138A123EEDCD600845449 /* Reg.swift in Sources */,
 				D8282AD423D1FFFC00859973 /* Opening Page.swift in Sources */,
 				D80D9C4F23F0045C00631DC9 /* SparadDag.swift in Sources */,
 				D8B5F61223F5995A00EB3A4E /* OvercomeAsyncVC.swift in Sources */,
-				D8C720DB23D3096100C1EFF0 /* Registration.swift in Sources */,
 				D814CD9623F443F000C7609B /* DagenIgang.swift in Sources */,
 				D814CD9423F4041100C7609B /* TableViewShowData.swift in Sources */,
 				D8282AD023D1FFFC00859973 /* AppDelegate.swift in Sources */,

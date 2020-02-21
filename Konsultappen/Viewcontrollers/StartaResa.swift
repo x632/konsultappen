@@ -25,7 +25,6 @@ class StartaResa: UIViewController {
     }
         
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //  calendar = Calendar.current
         startTime = Date()
         if segue.identifier == "toAvslutaResa" {
             let destinationVC = segue.destination as! AvslutaResa

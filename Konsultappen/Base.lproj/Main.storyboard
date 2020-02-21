@@ -91,7 +91,6 @@
                                 </state>
                                 <connections>
                                     <action selector="avslutaDagenTapped:" destination="qMq-Ko-X18" eventType="touchUpInside" id="AFw-eJ-KP3"/>
-                                    <segue destination="sJH-R8-F15" kind="show" identifier="toTableView" id="OtG-97-dsb"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hemresa" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QeE-jm-BYi">
@@ -127,10 +126,13 @@
                         <viewLayoutGuide key="safeArea" id="Hqw-7P-iIn"/>
                     </view>
                     <navigationItem key="navigationItem" id="Iko-Wd-Nuu"/>
+                    <connections>
+                        <segue destination="sJH-R8-F15" kind="show" identifier="toTableview" id="wZp-gg-RNn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DCk-MO-7eo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="960.86956521739137" y="935.49107142857133"/>
+            <point key="canvasLocation" x="1226" y="930"/>
         </scene>
         <!--Tableview-->
         <scene sceneID="Jds-EF-aTZ">
@@ -713,7 +715,7 @@
                                     <color key="titleColor" red="0.28394839170000002" green="0.27284565570000002" blue="0.2727301419" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="ozi-MN-X4F" kind="show" identifier="dagenToPaus" id="r8r-s3-ehH"/>
+                                    <action selector="pausTapped:" destination="fdc-9h-RiE" eventType="touchUpInside" id="cs6-ih-jz8"/>
                                 </connections>
                             </button>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dagen är igång" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GIV-F5-1bu">
@@ -729,7 +731,7 @@
                                     <color key="titleColor" red="0.28394839170000002" green="0.27284565570000002" blue="0.2727301419" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="qMq-Ko-X18" kind="show" identifier="toHemresa" id="Ba1-n4-ucQ"/>
+                                    <action selector="startaHemresaTapped:" destination="fdc-9h-RiE" eventType="touchUpInside" id="B8d-gN-kKa"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K6F-Vf-LlT">
@@ -760,10 +762,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="qgD-ot-bbD"/>
                     <value key="contentSizeForViewInPopover" type="size" width="375" height="667"/>
+                    <connections>
+                        <segue destination="ozi-MN-X4F" kind="show" identifier="dagenToPaus" id="uDU-7J-6Ak"/>
+                        <segue destination="qMq-Ko-X18" kind="show" identifier="toHemresa" id="4bv-fv-Ul7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9un-Zn-N5h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3632" y="137"/>
+            <point key="canvasLocation" x="3613" y="137"/>
         </scene>
         <!--Paus-->
         <scene sceneID="OvV-6v-jye">
@@ -803,8 +809,7 @@
                                     <color key="titleColor" red="0.28394839170000002" green="0.27284565570000002" blue="0.2727301419" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="avslutaPausTapped:" destination="ozi-MN-X4F" eventType="touchUpInside" id="eke-bd-rBg"/>
-                                    <segue destination="IQ4-NC-lcp" kind="unwind" identifier="backToDagenIgang" unwindAction="unwindToDagenIgang:" id="kE1-RI-aXK"/>
+                                    <action selector="avslutaPausTapped:" destination="ozi-MN-X4F" eventType="touchUpInside" id="Uyn-Zr-SLh"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -823,9 +828,11 @@
                         <viewLayoutGuide key="safeArea" id="H70-Rd-sWp"/>
                     </view>
                     <navigationItem key="navigationItem" id="gxP-dx-VIB"/>
+                    <connections>
+                        <segue destination="fdc-9h-RiE" kind="show" identifier="backToDagenIgang" id="Wr7-kz-BS1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JD5-Xg-17D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="IQ4-NC-lcp" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4400" y="137"/>
         </scene>
@@ -913,8 +920,8 @@
         <image name="clock-3179167_960_720 (kopia)-1" width="412" height="274"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="rwm-T6-b71"/>
-        <segue reference="gwc-ts-jkS"/>
+        <segue reference="Wr7-kz-BS1"/>
+        <segue reference="ppo-e4-jxp"/>
         <segue reference="8CK-Ot-md7"/>
         <segue reference="fPd-Kr-5Vp"/>
     </inferredMetricsTieBreakers>

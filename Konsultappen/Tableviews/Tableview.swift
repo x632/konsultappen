@@ -23,35 +23,60 @@ class Tableview: UIViewController, UITableViewDataSource, UITableViewDelegate{
      var auth : Auth!
     var minArray = [SparadDag]()
       var minSArray : [String] = []
-    
-    
+    var testArray: [TimePost]!
     
         override func viewDidLoad() {
             super.viewDidLoad()
            
-        //plussar på tiderna, skapar
-            for n in 0...(dagObject.count-1){
-             
-                var b = ""
-                let a = dagObject.entries[n]
-                if "\(a.namn!)" == "Paus"{
-                b = ("\(a.namn!)")
-                } else{
-                b = ("\(a.namn!) \(a.formStartTime!) - \(a.formEndTime!)")
-                }
-                if "\(a.namn!)" == "Arbetad tid"{
-                    arbetadTid += a.duration!
-                }
-                if "\(a.namn!)" == "Resa"{
-                    restTid += a.duration!
-                }
-                datum = a.justDate!
-                list.append(b)
-                titleLabel?.text = datum
+            
+            
+            for n in 0...(testArray.count-1){
+                 var b = ""
                 
-               
+                                if "\(testArray[n].namn!)" == "Paus"{
+                                b = ("\(testArray[n].namn!)")
+                                } else{
+                                b = ("\(testArray[n].namn!) \(testArray[n].formStartTime!) - \(testArray[n].formEndTime!)")
+                                }
+                                if "\(testArray[n].namn!)" == "Arbetstid"{
+                                    arbetadTid += testArray[n].duration!
+                                }
+                                if "\(testArray[n].namn!)" == "Resa"{
+                                    restTid += testArray[n].duration!
+                                }
+                                datum = testArray[n].justDate!
+                                list.append(b)
+                                titleLabel?.text = datum
+                               
             }
-            list.append("***************************")
+            
+            
+            
+            
+       
+//
+//                var b = ""
+//                let a = dagObject.entries[n]
+//                if "\(a.namn!)" == "Paus"{
+//                b = ("\(a.namn!)")
+//                } else{
+//                b = ("\(a.namn!) \(a.formStartTime!) - \(a.formEndTime!)")
+//                }
+//                if "\(a.namn!)" == "Arbetstid"{
+//                    arbetadTid += a.duration!
+//                }
+//                if "\(a.namn!)" == "Resa"{
+//                    restTid += a.duration!
+//                }
+//                datum = a.justDate!
+//                list.append(b)
+//                titleLabel?.text = datum
+//                datum = testArray[n].justDate!
+//                list.append(b)
+//                 titleLabel?.text = datum
+               
+            //}
+           list.append("***************************")
             list.append("RESTID: \(restTid)min")
             list.append("ARBETAD TID: \(arbetadTid)min")
         
@@ -70,7 +95,7 @@ class Tableview: UIViewController, UITableViewDataSource, UITableViewDelegate{
          saveToFirestore()
     }
        
-    // obs! ingen completion handler på sparningen - åtgärdat
+    
     func saveToFirestore (){
         auth = Auth.auth()
         guard let user = auth.currentUser else { return }
@@ -81,7 +106,7 @@ class Tableview: UIViewController, UITableViewDataSource, UITableViewDelegate{
             if let err = err {
                     print("Error adding document: \(err)")
                 } else {
-                    print("Document added!")
+                    print("Document added to cloud!")
                 self.showArray()
                 }
             }

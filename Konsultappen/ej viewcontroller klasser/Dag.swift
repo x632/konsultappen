@@ -13,9 +13,15 @@ struct Dag {
     var count : Int {
         return entries.count
     }
+    
+    
+    
     mutating func add(entry: TimePost) {
         entries.append(entry)
     }
+    
+    
+    
     func entry(index: Int) -> TimePost? {
             if index >= 0 && index < entries.count {
                 return entries[index]
