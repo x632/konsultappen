@@ -17,6 +17,7 @@ class TableViewShowData: UIViewController, UITableViewDataSource, UITableViewDel
     var auth : Auth!
     var sammanlagdArbTid = 0
     var sammanlagdResTid = 0
+    var sammanlagdaMil = 0.0
     var krPerMil : Int!
     var krPerArbTim : Int!
     var krPerResTim : Int!
@@ -26,11 +27,12 @@ class TableViewShowData: UIViewController, UITableViewDataSource, UITableViewDel
 
     @IBOutlet weak var ArbetadeTimmar: UILabel!
     
-   
     @IBOutlet weak var Restimmar: UILabel!
     
     @IBOutlet weak var Summa: UILabel!    
  
+    @IBOutlet weak var Antalmil: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         for _ in 0...minSArray.count-1{
@@ -53,39 +55,50 @@ class TableViewShowData: UIViewController, UITableViewDataSource, UITableViewDel
         var c = 0.0
         var d = 0.0
         var e = 0.0
+        var g = 0.0
         let s = minArray![indexPath.row]
         sammanlagdArbTid += (s.arbetadTid)
         sammanlagdResTid += (s.restTid)
+        sammanlagdaMil += (s.mil)
+        print("direkt från uträkningen \(s.mil)")
         selectArray[indexPath.row] = true
       
         c = (Double(sammanlagdResTid)) * ((Double(krPerResTim)/60))
         d = (Double(sammanlagdArbTid) * (Double(krPerArbTim)/60))
-        e = c + d
+        g = sammanlagdaMil * (Double(krPerMil))
+        e = c + d + g
         let f = Int(e)
         Summa.text = "\(f)kr"
         let a = makeHoursFormat(sammanlagdArbTid)
         let b = makeHoursFormat(sammanlagdResTid)
         ArbetadeTimmar.text = a
         Restimmar.text = b
+        Antalmil.text = "\(String(format: "%.1f", sammanlagdaMil))"
     }
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let s = minArray![indexPath.row]
         var c = 0.0
         var d = 0.0
         var e = 0.0
+        var g = 0.0
         sammanlagdArbTid -= (s.arbetadTid)
         sammanlagdResTid -= (s.restTid)
+        sammanlagdaMil -= (s.mil)
         selectArray[indexPath.row] = false
        
         c = (Double(sammanlagdResTid)) * ((Double(krPerResTim)/60))
         d = (Double(sammanlagdArbTid) * (Double(krPerArbTim)/60))
-        e = c + d
+        g = sammanlagdaMil * (Double(krPerMil))
+        e = c + d + g
         let f = Double(round(1*e)/1)
         Summa.text = "\(f)kr"
         let a = makeHoursFormat(sammanlagdArbTid)
         let b = makeHoursFormat(sammanlagdResTid)
         ArbetadeTimmar.text = a
         Restimmar.text = b
+        Antalmil.text = "\(String(format: "%.1f", sammanlagdaMil))"
+        
+        
     }
    
     
@@ -121,6 +134,7 @@ class TableViewShowData: UIViewController, UITableViewDataSource, UITableViewDel
                 self.docIDArray.remove(at:indexPath.row)
                 self.sammanlagdArbTid = 0
                 self.sammanlagdResTid = 0
+                self.sammanlagdaMil = 0.0
             }
         }
         

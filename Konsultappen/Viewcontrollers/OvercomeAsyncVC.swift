@@ -58,8 +58,10 @@ class OvercomeAsyncVC: UIViewController {
                     
                     let datat = SparadDag(snapshot: document)
                     self.docIDArray.append(document.documentID)
+                    //själva objekten - skickas till showdata
                     self.minArray.append(datat)
-                    self.minSArray.append("\(datat.datum) Rest tid: \(datat.restTid)min Arbetad tid: \(datat.arbetadTid)min")
+                    //arrayn med strängar - skickas till Showdata
+                    self.minSArray.append("\(datat.datum) Restid: \(datat.restTid) Arbetstid: \(datat.arbetadTid) Mil: \(String(format: "%.1f", datat.mil))")
                 }
                 
                 self.klar = true

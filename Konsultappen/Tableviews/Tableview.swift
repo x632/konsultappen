@@ -26,6 +26,8 @@ class Tableview: UIViewController, UITableViewDataSource, UITableViewDelegate{
     var testArray: [TimePost]!
     var docID : [String]!
     var kommitVanligaVagen = true
+    var sammanlagdMilersattning : Double = 0.0
+    var mil : Double = 0.0
     
         override func viewDidLoad() {
             super.viewDidLoad()
@@ -47,14 +49,23 @@ class Tableview: UIViewController, UITableViewDataSource, UITableViewDelegate{
                 
                                 if "\(testArray[n].namn!)" == "Paus"{
                                 b = ("\(testArray[n].namn!)")
-                                } else{
+                                } else if "\(testArray[n].namn!)" == "Ditresa"{
+                                    let c = testArray[n].milersattning!/10000
+                                    b = ("\(testArray[n].namn!) \(testArray[n].formStartTime!) - \(testArray[n].formEndTime!) mil: \(String(format: "%.2f", c))")
+                                }
+                                 else if "\(testArray[n].namn!)" == "Tillbakaresa"{
+                                    let c = testArray[n].milersattning!/10000
+                                    b = ("\(testArray[n].namn!) \(testArray[n].formStartTime!) - \(testArray[n].formEndTime!) mil: \(String(format: "%.2f", c))")
+                                }
+                                else{
                                 b = ("\(testArray[n].namn!) \(testArray[n].formStartTime!) - \(testArray[n].formEndTime!)")
                                 }
                                 if "\(testArray[n].namn!)" == "Arbetstid"{
                                     arbetadTid += testArray[n].duration!
                                 }
-                                if "\(testArray[n].namn!)" == "Resa"{
+                                if "\(testArray[n].namn!)" == "Ditresa" || "\(testArray[n].namn!)" == "Tillbakaresa"{
                                     restTid += testArray[n].duration!
+                                    sammanlagdMilersattning += testArray[n].milersattning!
                                 }
                                 datum = testArray[n].justDate!
                                 list.append(b)
@@ -65,7 +76,11 @@ class Tableview: UIViewController, UITableViewDataSource, UITableViewDelegate{
            list.append("***************************")
             list.append("RESTID: \(restTid)min")
             list.append("ARBETAD TID: \(arbetadTid)min")
-        
+            let c = sammanlagdMilersattning/10000
+            list.append("RESTA MIL: \(String(format: "%.1f", c))")
+            //let e = Double(round(10*c)/10)
+            mil = c
+            print ("mil i tableview klassen: \(mil)")
     }
           
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -81,13 +96,13 @@ class Tableview: UIViewController, UITableViewDataSource, UITableViewDelegate{
          saveToFirestore()
     }
        
-    
+    //spara dagen (arbtid, restid, mil) i Firestore
     func saveToFirestore (){
         auth = Auth.auth()
         guard let user = auth.currentUser else { return }
         let db = Firestore.firestore()
         let itemRef = db.collection("users").document(user.uid).collection("dagar")
-        let sparadObj = SparadDag(datum : datum, arbetadTid : arbetadTid, restTid : restTid, timeStamp: Date())
+        let sparadObj = SparadDag(datum : datum, arbetadTid : arbetadTid, restTid : restTid, timeStamp: Date(), mil: mil)
         itemRef.addDocument(data: sparadObj.toDict()) { err in
             if let err = err {
                     print("Error adding document: \(err)")

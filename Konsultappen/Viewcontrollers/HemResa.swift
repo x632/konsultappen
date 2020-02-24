@@ -10,10 +10,13 @@ import Foundation
 import UIKit
 import Firebase
 import FirebaseFirestoreSwift
+import CoreLocation
 
-class HemResa: UIViewController {
+class HemResa: UIViewController, CLLocationManagerDelegate {
     
     //var dagObject : Dag?
+    var index : Int = -1
+    var totalDistance : Double = 0.0
     var startTime : Date?
     var endTime : Date?
     var auth: Auth!
@@ -21,17 +24,52 @@ class HemResa: UIViewController {
     var minSArray : [String] = []
     var docID : [String] = []
     var testArray = [TimePost]()
+    var manager: CLLocationManager?
+    var Locations : [CLLocation] = []
+    var firstLocation : CLLocation?
+    var lastLocation : CLLocation?
+    var harTryckt : Bool = true
+    @IBOutlet weak var resaLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        manager = CLLocationManager()
+        manager?.delegate = self
+        manager?.desiredAccuracy = kCLLocationAccuracyBest
+        manager?.distanceFilter = 0
+        manager?.startUpdatingLocation()
+        
+        
         getFromFirestore()
     }
     
     @IBAction func avslutaDagenTapped(_ sender: Any) {
-        self.createFirestoreTimePostObject() //ta startpunkt från firestore
+        if harTryckt {
+        manager?.stopUpdatingLocation()
+        self.createFirestoreTimePostObject()
+            harTryckt = false}
+        
+        //ta startpunkt från firestore
     }
-    
-    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+         if locations.last != nil {
+             
+             Locations.append(locations.last!)
+             index += 1
+             if index == 0 {
+             firstLocation = Locations[index]
+             }
+             else {
+             firstLocation = Locations[index-1]
+             lastLocation = Locations[index]
+            
+             let distanceBetweenLocations =  lastLocation!.distance(from: firstLocation!)
+             totalDistance += distanceBetweenLocations
+             resaLabel.text = ("mil: \(String(format: "%.2f", totalDistance/10000))")
+             }
+         }
+         
+     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "toTableview" {
@@ -48,7 +86,7 @@ class HemResa: UIViewController {
         let db = Firestore.firestore()
         let itemRef = db.collection("users").document(user.uid).collection("timeposts")
         
-        let post = TimePost(startTime: startTime!, endTime: endTime!,namn: "Resa")
+       let post = TimePost(startTime: startTime!, endTime: endTime!,namn: "Tillbakaresa", milersattning: totalDistance)
         
         itemRef.addDocument(data: post.toDict()) { err in
             if let err = err {
@@ -58,7 +96,6 @@ class HemResa: UIViewController {
                 print(post)
                 self.getAllFromFirestore()
                 
-                //self.performSegue(withIdentifier: "toTableview", sender: self)
             }
         }
     }

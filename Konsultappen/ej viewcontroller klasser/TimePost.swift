@@ -17,18 +17,20 @@ struct TimePost {
     var calendar = Calendar.current
     var namn : String?
     var duration : Int!
+    var milersattning : Double?
     private let dateFormatter = DateFormatter()
     var formStartTime : String?
     var formEndTime : String?
     var justDate : String?
     
     
-    init (startTime: Date, endTime: Date, namn: String) {
+    init (startTime: Date, endTime: Date, namn: String, milersattning: Double) {
         self.startTime = startTime
         self.endTime = endTime
         self.namn = namn
         let calendar = Calendar.current
         self.duration = calendar.dateComponents([.second], from: startTime, to: endTime).second
+        self.milersattning = milersattning
         //
         //       dateFormatter.dateFormat = "HH:mm:ss"
         //       self.formStartTime = dateFormatter.string(from: startTime)
@@ -48,6 +50,7 @@ struct TimePost {
         let aS = snapshotValue["endTime"] as! Timestamp
         self.endTime = aS.dateValue()
         self.namn = snapshotValue["namn"] as! String
+        self.milersattning = snapshotValue["milersattning"] as! Double
         self.duration = snapshotValue["duration"] as? Int
         dateFormatter.dateFormat = "HH:mm:ss"
         self.formStartTime = dateFormatter.string(from: startTime)
@@ -65,7 +68,8 @@ struct TimePost {
         return ["startTime" : startTime,
                 "endTime" : endTime,
                 "namn" : namn!,
-                "duration" : duration!]
+                "duration" : duration!,
+                "milersattning" : milersattning!]
     }
     
 }

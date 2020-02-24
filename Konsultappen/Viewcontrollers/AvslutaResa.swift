@@ -10,28 +10,39 @@
 import UIKit
 import Firebase
 import FirebaseFirestoreSwift
+import CoreLocation
 
-class AvslutaResa: UIViewController {
+class AvslutaResa: UIViewController,CLLocationManagerDelegate {
     
     var auth: Auth!
     var startTime : Date?
     var endTime : Date?
-    var GPS : [Int]?
+    var index : Int = -1
+    var manager: CLLocationManager?
+    var Locations : [CLLocation] = []
+    var totalDistance : Double = 0.0
+    var firstLocation : CLLocation?
+    var lastLocation : CLLocation?
     
+    @IBOutlet weak var resaLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
- 
-        
+        manager = CLLocationManager()
+        manager?.delegate = self
+        manager?.desiredAccuracy = kCLLocationAccuracyBest
+        manager?.requestWhenInUseAuthorization()
+        manager?.startUpdatingLocation()
+        //manager?.distanceFilter = 50
     }
     
     @IBAction func frammePressed(_ sender: UIButton) {
+        manager?.stopUpdatingLocation()
         getFromFirestore()
         
         
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //let dagObject = createObject()
         createFirestoreTimePostObject()
         startTime = Date()
            auth = Auth.auth()
@@ -62,7 +73,7 @@ class AvslutaResa: UIViewController {
         let db = Firestore.firestore()
         let itemRef = db.collection("users").document(user.uid).collection("timeposts")
         
-        let post = TimePost(startTime: startTime!, endTime: endTime!,namn: "Resa")
+        let post = TimePost(startTime: startTime!, endTime: endTime!,namn: "Ditresa", milersattning: totalDistance)
         
         itemRef.addDocument(data: post.toDict()) { err in
             if let err = err {
@@ -72,6 +83,26 @@ class AvslutaResa: UIViewController {
                 print(post)
             }
         }
+    }
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if locations.last != nil {
+            
+            Locations.append(locations.last!)
+            index += 1
+            if index == 0 {
+            firstLocation = Locations[index]
+            }
+            else {
+            firstLocation = Locations[index-1]
+            lastLocation = Locations[index]
+           
+            let  distanceBetweenLocations =  lastLocation!.distance(from: firstLocation!)
+            totalDistance += distanceBetweenLocations
+                
+                resaLabel.text = ("mil: \(String(format: "%.2f", totalDistance/10000))")
+            }
+        }
+        
     }
  
     func getFromFirestore() {

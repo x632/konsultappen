@@ -76,7 +76,7 @@ class Paus: UIViewController {
         let db = Firestore.firestore()
         let itemRef = db.collection("users").document(user.uid).collection("timeposts")
         
-        let post = TimePost(startTime: startTime!, endTime: endTime!,namn: "Paus")
+         let post = TimePost(startTime: startTime!, endTime: endTime!,namn: "Paus", milersattning: 0.0)
         
         itemRef.addDocument(data: post.toDict()) { err in
             if let err = err {

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>För att kunna ta ett GPS koordinat vid resans start och vid resans slut - för att beräkna milersättning - behövs din tillåtelse.</string>
+	<string>för att kunna använda telefonens GPS i syfte att beräkna milersättning - behövs din tillåtelse.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
