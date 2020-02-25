@@ -31,13 +31,6 @@ struct TimePost {
         let calendar = Calendar.current
         self.duration = calendar.dateComponents([.second], from: startTime, to: endTime).second
         self.milersattning = milersattning
-        //
-        //       dateFormatter.dateFormat = "HH:mm:ss"
-        //       self.formStartTime = dateFormatter.string(from: startTime)
-        //        self.formEndTime = dateFormatter.string(from: endTime)
-        //        dateFormatter.dateFormat = "dd MMM yyyy"
-        //        self.justDate = dateFormatter.string(from: startTime)
-        //       // self.count += 1
     }
     
     init(snapshot: QueryDocumentSnapshot) {

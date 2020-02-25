@@ -14,13 +14,12 @@ import CoreLocation
 
 class HemResa: UIViewController, CLLocationManagerDelegate {
     
-    //var dagObject : Dag?
+ 
     var index : Int = -1
     var totalDistance : Double = 0.0
     var startTime : Date?
     var endTime : Date?
     var auth: Auth!
-    //var minArray = [SparadDag]()
     var minSArray : [String] = []
     var docID : [String] = []
     var testArray = [TimePost]()
@@ -36,7 +35,8 @@ class HemResa: UIViewController, CLLocationManagerDelegate {
         manager = CLLocationManager()
         manager?.delegate = self
         manager?.desiredAccuracy = kCLLocationAccuracyBest
-        manager?.distanceFilter = 0
+        manager?.distanceFilter = 50
+        manager?.allowsBackgroundLocationUpdates = true
         manager?.startUpdatingLocation()
         
         
@@ -44,6 +44,7 @@ class HemResa: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func avslutaDagenTapped(_ sender: Any) {
+        //hanterar möjligheten att hinna trycka två gånger vid dålig uppkoppling
         if harTryckt {
         manager?.stopUpdatingLocation()
         self.createFirestoreTimePostObject()

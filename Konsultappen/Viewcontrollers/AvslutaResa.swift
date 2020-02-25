@@ -31,9 +31,10 @@ class AvslutaResa: UIViewController,CLLocationManagerDelegate {
         manager = CLLocationManager()
         manager?.delegate = self
         manager?.desiredAccuracy = kCLLocationAccuracyBest
-        manager?.requestWhenInUseAuthorization()
+        manager?.requestAlwaysAuthorization()
+        manager?.distanceFilter = 50
         manager?.startUpdatingLocation()
-        //manager?.distanceFilter = 50
+        manager?.allowsBackgroundLocationUpdates = true
     }
     
     @IBAction func frammePressed(_ sender: UIButton) {

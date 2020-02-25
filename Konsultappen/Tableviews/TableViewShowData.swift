@@ -97,11 +97,8 @@ class TableViewShowData: UIViewController, UITableViewDataSource, UITableViewDel
         ArbetadeTimmar.text = a
         Restimmar.text = b
         Antalmil.text = "\(String(format: "%.1f", sammanlagdaMil))"
-        
-        
-    }
-   
     
+    }
     
     func makeHoursFormat(_ a: Int) -> String{
         var timmar = 0
