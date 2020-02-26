@@ -24,9 +24,9 @@ class Inloggning: UIViewController {
         super.viewDidLoad()
         auth = Auth.auth()
         feluppgifterLbl.alpha = 0
-        // Do any additional setup after loading the view.
     }
     
+    //Inloggning
     @IBAction func LoggaInPressed(_ sender: UIButton) {
      
         let email : String
@@ -54,7 +54,7 @@ class Inloggning: UIViewController {
                 }
             }
         } 
-        
+        //visa felmeddelande vid inloggning
         func showError(_ message: String){
             feluppgifterLbl.text = message
             feluppgifterLbl.alpha = 1

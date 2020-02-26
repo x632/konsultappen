@@ -29,6 +29,7 @@ class RegAuth: UIViewController {
         errorLabel.alpha = 0
     }
     
+    // skapar ny användare
     @IBAction func sparaPressed(_ sender: UIButton) {
         
         let email : String
@@ -54,6 +55,7 @@ class RegAuth: UIViewController {
         
     }
     
+    //Visa felmeddelande - felaktig epost eller lösenord
     func showError(_ message: String){
         errorLabel.text = message
         errorLabel.alpha = 1

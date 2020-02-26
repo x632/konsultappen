@@ -108,10 +108,10 @@ class TableViewShowData: UIViewController, UITableViewDataSource, UITableViewDel
         minuter = a % 60
         
         if minuter < 10 {
-            return ("\(timmar):0\(minuter)")
+            return ("\(timmar):0\(minuter)min")
         }
         else{
-            return ("\(timmar):\(minuter)")
+            return ("\(timmar):\(minuter)min")
         }
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

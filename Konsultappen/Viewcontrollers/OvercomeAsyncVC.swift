@@ -23,7 +23,8 @@ class OvercomeAsyncVC: UIViewController {
     var kommitVanligaVagen : Bool?
     
     override func viewDidLoad() {
-      //radera Timposts collection om kommit från tableview 1
+      //startar radera Timposts collection om kommit från tableview 1. Annars
+     // error när man kommer andra vägen
         if kommitVanligaVagen != nil{
             super.viewDidLoad()
             let max = docID.count
@@ -69,7 +70,7 @@ class OvercomeAsyncVC: UIViewController {
         }
     }
     
-    
+    // ta bl a indata för fakturasumma uträkning (frivillig)
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let mil : Int
         let arb : Int
@@ -95,7 +96,7 @@ class OvercomeAsyncVC: UIViewController {
         destVC.krPerMil = mil
         destVC.docIDArray = docIDArray
     }
-    
+    // Om allt är inläst och klart gå vidare...
     @IBAction func vidareTapped(_ sender: UIButton) {
         if klar{
             self.performSegue(withIdentifier: "toVisaData", sender: self)
@@ -103,6 +104,8 @@ class OvercomeAsyncVC: UIViewController {
             print ("Håller på och laddar data, vänta ett ögonblick!")
         }
     }
+    
+    //radera timepostscollection
     func eraseCollection(ID : String) -> Bool{
         
         auth = Auth.auth()

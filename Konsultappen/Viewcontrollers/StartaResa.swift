@@ -21,13 +21,16 @@ class StartaResa: UIViewController {
     }
     
     @IBAction func startaResaPressed(_ sender: UIButton) {
+    
         performSegue(withIdentifier: "toAvslutaResa", sender: self)
-        
     }
     
+    // möjlighet att gå till tidigare sparade poster
     @IBAction func seSparadePosterTap(_ sender: UIButton) {
         performSegue(withIdentifier: "toData", sender: self)
     }
+    
+    //spara tidpunkt på firestore som blir startpunkt sedan
     override func prepare(for segue:
         
         UIStoryboardSegue, sender: Any?) {

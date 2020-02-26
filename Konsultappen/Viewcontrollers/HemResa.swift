@@ -28,8 +28,11 @@ class HemResa: UIViewController, CLLocationManagerDelegate {
     var firstLocation : CLLocation?
     var lastLocation : CLLocation?
     var harTryckt : Bool = true
+    var bugfix : Bool = false
+    
     @IBOutlet weak var resaLabel: UILabel!
     
+    // startar GPS
     override func viewDidLoad() {
         super.viewDidLoad()
         manager = CLLocationManager()
@@ -44,16 +47,19 @@ class HemResa: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func avslutaDagenTapped(_ sender: Any) {
-        //hanterar möjligheten att hinna trycka två gånger vid dålig uppkoppling
+        //hanterar buggen att hinna trycka två gånger vid dålig uppkoppling
         if harTryckt {
         manager?.stopUpdatingLocation()
         self.createFirestoreTimePostObject()
             harTryckt = false}
-        
-        //ta startpunkt från firestore
     }
+    // distansberäkningen
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
          if locations.last != nil {
+            //if bugfix == false && totalDistance != 0.0{
+            //               totalDistance = 0.0
+            //               bugfix = true
+            //}
              
              Locations.append(locations.last!)
              index += 1
@@ -71,6 +77,7 @@ class HemResa: UIViewController, CLLocationManagerDelegate {
          }
          
      }
+    //Skicka med array med timeposts och array med id:n till tableview
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "toTableview" {
@@ -80,7 +87,8 @@ class HemResa: UIViewController, CLLocationManagerDelegate {
         }
         
     }
-    func createFirestoreTimePostObject(){//tar skuttiden och sparar ett firestoretimepostobjekt
+    //tar sluttiden och sparar ett firestoretimepostobjekt
+    func createFirestoreTimePostObject(){
         endTime = Date()
         auth = Auth.auth()
         guard let user = auth.currentUser else { return }
@@ -100,7 +108,8 @@ class HemResa: UIViewController, CLLocationManagerDelegate {
             }
         }
     }
-    //Ladda ner alla Timepostobject från firestore och lägg in dem i en Dagarray
+    //Ladda ner alla Timepostobject från firestore och lägg in dem i
+    //en dagarray(testArray). Gör också en array med ID:s för att senare kunna radera dessa dokument
     func getAllFromFirestore() {
           
             auth = Auth.auth()
@@ -124,6 +133,7 @@ class HemResa: UIViewController, CLLocationManagerDelegate {
             }
         }
       }
+    //ladda ner starttid från firestore
     func getFromFirestore() {
         auth = Auth.auth()
         let db = Firestore.firestore()

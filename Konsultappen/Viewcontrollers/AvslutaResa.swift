@@ -23,9 +23,12 @@ class AvslutaResa: UIViewController,CLLocationManagerDelegate {
     var totalDistance : Double = 0.0
     var firstLocation : CLLocation?
     var lastLocation : CLLocation?
+    var bugfix : Bool = false
     
     @IBOutlet weak var resaLabel: UILabel!
     
+    
+    //startar gps mätningen eftersom starta är tryckt på föregående sida.
     override func viewDidLoad() {
         super.viewDidLoad()
         manager = CLLocationManager()
@@ -36,13 +39,15 @@ class AvslutaResa: UIViewController,CLLocationManagerDelegate {
         manager?.startUpdatingLocation()
         manager?.allowsBackgroundLocationUpdates = true
     }
-    
+    //avslutat resa hämta starttiden från firestore..
     @IBAction func frammePressed(_ sender: UIButton) {
         manager?.stopUpdatingLocation()
         getFromFirestore()
         
         
     }
+    //sätter bl a "bokmärke" i programmet som sparas på firestore
+    //sparar nästa starttid
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         createFirestoreTimePostObject()
         startTime = Date()
@@ -66,7 +71,8 @@ class AvslutaResa: UIViewController,CLLocationManagerDelegate {
                }
            }
     }
-    
+    //Skapar ett timepostobjekt med starttid, sluttid och körda mil
+    //sparar det på firestore
     func createFirestoreTimePostObject(){
         endTime = Date()
         auth = Auth.auth()
@@ -85,9 +91,13 @@ class AvslutaResa: UIViewController,CLLocationManagerDelegate {
             }
         }
     }
+    //skapar egen array med CLLocations. Räknar ut distans mellan punkterna
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if locations.last != nil {
-            
+           // if bugfix == false && totalDistance != 0.0{
+           //     totalDistance = 0.0
+           //     bugfix = true
+           // }
             Locations.append(locations.last!)
             index += 1
             if index == 0 {
@@ -106,6 +116,8 @@ class AvslutaResa: UIViewController,CLLocationManagerDelegate {
         
     }
  
+    
+    //Hämtar startpunkten från firestore. Sätter igång prepare for segue..
     func getFromFirestore() {
         auth = Auth.auth()
         let db = Firestore.firestore()
