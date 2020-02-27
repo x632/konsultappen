@@ -11,7 +11,7 @@ import Firebase
 import FirebaseFirestoreSwift
 
 
-class OvercomeAsyncVC: UIViewController {
+class OvercomeAsyncVC: UIViewController, UITextFieldDelegate {
     
     var minArray = [SparadDag]()
     var minSArray : [String] = []
@@ -23,8 +23,9 @@ class OvercomeAsyncVC: UIViewController {
     var kommitVanligaVagen : Bool?
     
     override func viewDidLoad() {
-      //startar radera Timposts collection om kommit från tableview 1. Annars
-     // error när man kommer andra vägen
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
+        //startar radera Timposts collection om kommit från tableview 1. Annars
+        // error när man kommer andra vägen
         if kommitVanligaVagen != nil{
             super.viewDidLoad()
             let max = docID.count
@@ -33,11 +34,22 @@ class OvercomeAsyncVC: UIViewController {
             while index < max{
                 id = ("\(docID![index])")
                 let b = eraseCollection(ID: id)
-                print (b)
+                //print (b)
                 index += 1
             }
         }
         getFromFirestore()
+    }
+    @objc func dismissKeyboard(){
+        krPerArbTim.resignFirstResponder()
+        krPerMil.resignFirstResponder()
+        krPerResTim.resignFirstResponder()
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool{
+        krPerArbTim.resignFirstResponder()
+        krPerMil.resignFirstResponder()
+        krPerResTim.resignFirstResponder()
+        return true
     }
     
     

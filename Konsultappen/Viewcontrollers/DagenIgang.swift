@@ -77,7 +77,7 @@ class DagenIgang: UIViewController {
                 print("Error adding document: \(err)")
             } else {
                 print("Timepost document added to cloud!")
-                print(post)
+                //print(post)
             }
         }
     }

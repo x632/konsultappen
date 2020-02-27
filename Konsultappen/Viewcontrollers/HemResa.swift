@@ -102,7 +102,7 @@ class HemResa: UIViewController, CLLocationManagerDelegate {
                 print("Error adding document: \(err)")
             } else {
                 print("Timepost document added to cloud!")
-                print(post)
+                //print(post)
                 self.getAllFromFirestore()
                 
             }
@@ -127,7 +127,7 @@ class HemResa: UIViewController, CLLocationManagerDelegate {
                     self.docID.append(document.documentID)
                 
                 }
-                print(self.testArray)
+                //print(self.testArray)
                 self.performSegue(withIdentifier: "toTableview", sender: self)
            
             }

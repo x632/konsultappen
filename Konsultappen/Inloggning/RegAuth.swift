@@ -10,7 +10,7 @@ import Firebase
 import FirebaseFirestoreSwift
 
 
-class RegAuth: UIViewController {
+class RegAuth: UIViewController, UITextFieldDelegate {
     
     
     @IBOutlet weak var emailTextField: UITextField!
@@ -24,10 +24,20 @@ class RegAuth: UIViewController {
     let segueID = "toInloggning"
     
     override func viewDidLoad() {
+         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
         super.viewDidLoad()
         db = Firestore.firestore()
         errorLabel.alpha = 0
     }
+    @objc func dismissKeyboard(){
+           emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+       }
+       func textFieldShouldReturn(_ textField: UITextField) -> Bool{
+           emailTextField.resignFirstResponder()
+            passwordTextField.resignFirstResponder()
+           return true
+       }
     
     // skapar ny användare
     @IBAction func sparaPressed(_ sender: UIButton) {

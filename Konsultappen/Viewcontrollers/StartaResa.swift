@@ -11,29 +11,58 @@ import FirebaseFirestoreSwift
 
 class StartaResa: UIViewController {
     
+    @IBOutlet weak var felLabel: UILabel!
+    
     var auth: Auth!
     var startTime: Date?
     var GPS : [Int]? = [1,2,3]
-    
+    var testArray : [String] = []
+    var felMeddelande : String = ""
+    var harTryckt = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     @IBAction func startaResaPressed(_ sender: UIButton) {
-    
+        
         performSegue(withIdentifier: "toAvslutaResa", sender: self)
     }
     
     // möjlighet att gå till tidigare sparade poster
     @IBAction func seSparadePosterTap(_ sender: UIButton) {
-        performSegue(withIdentifier: "toData", sender: self)
+        
+        auth = Auth.auth()
+        guard let user = auth.currentUser else { return }
+        let db = Firestore.firestore()
+        
+        let itemRef = db.collection("users").document(user.uid).collection("dagar")
+        
+        itemRef.getDocuments{ (snapshot, error) in
+            
+            if error == nil && snapshot != nil{
+                for document in snapshot!.documents {
+                    
+                    let datat = SparadDag(snapshot: document)
+                    self.performSegue(withIdentifier: "toData", sender: self)
+                    self.harTryckt = false
+                }
+            }
+            if self.harTryckt {
+                self.omIngaDokument()
+            }
+        }
     }
     
-    //spara tidpunkt på firestore som blir startpunkt sedan
-    override func prepare(for segue:
-        
-        UIStoryboardSegue, sender: Any?) {
+    func omIngaDokument(){
+        if harTryckt{
+            felLabel.text = "Det finns inga poster i databasen!"
+            felLabel.alpha = 1
+        }
+    }
+    
+    //spara tidpunkt och "bokmärke" på firestore som blir startpunkt sedan
+    override func prepare(for segue:UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toAvslutaResa" {
             startTime = Date()
             auth = Auth.auth()

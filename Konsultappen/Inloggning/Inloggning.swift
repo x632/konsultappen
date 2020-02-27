@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseFirestoreSwift
 
-class Inloggning: UIViewController {
+class Inloggning: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var emailTextField: UITextField!
     
@@ -21,10 +21,20 @@ class Inloggning: UIViewController {
     let segueID = "toStarta"
     
     override func viewDidLoad() {
+         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
         super.viewDidLoad()
         auth = Auth.auth()
         feluppgifterLbl.alpha = 0
     }
+    @objc func dismissKeyboard(){
+            emailTextField.resignFirstResponder()
+         passwordTextField.resignFirstResponder()
+        }
+        func textFieldShouldReturn(_ textField: UITextField) -> Bool{
+            emailTextField.resignFirstResponder()
+             passwordTextField.resignFirstResponder()
+            return true
+        }
     
     //Inloggning
     @IBAction func LoggaInPressed(_ sender: UIButton) {
