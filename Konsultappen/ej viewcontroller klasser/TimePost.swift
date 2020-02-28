@@ -29,7 +29,7 @@ struct TimePost {
         self.endTime = endTime
         self.namn = namn
         let calendar = Calendar.current
-        self.duration = calendar.dateComponents([.second], from: startTime, to: endTime).second
+        self.duration = calendar.dateComponents([.minute], from: startTime, to: endTime).minute
         self.milersattning = milersattning
     }
     

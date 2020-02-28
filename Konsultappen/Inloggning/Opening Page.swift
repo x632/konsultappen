@@ -25,18 +25,7 @@ class OpeningPage: UIViewController {
         getFromFirestore()
     }
     
-    // logga ut användaren
-    @IBAction func signOutTapped(_ sender: UIButton) {
-        if let user = self.auth.currentUser {
-            print(user.email!, "has signed out")
-            
-            do {
-                try auth.signOut()
-            } catch {
-                print("Error signing out")
-            }
-        }
-    }
+
     // Kollar om användaren är inloggad - i så fall går direkt till start
     // annars gå till registrering
     @IBAction func Tapped(_ sender: UITapGestureRecognizer) {
@@ -75,17 +64,12 @@ class OpeningPage: UIViewController {
     }
     //användaren skickas till där han slutade
     func navigating(){
-        if stannatVid == "AvslutaResa"{
-            performSegue(withIdentifier: "tillAvslutaResa", sender: self)
-        }
+        
         if stannatVid == "DagenIgang"{
             performSegue(withIdentifier: "tillDagenIgang", sender: self)
         }
         if stannatVid == "Paus"{
                    performSegue(withIdentifier: "tillPaus", sender: self)
-        }
-        if stannatVid == "Hemresa"{
-                          performSegue(withIdentifier: "tillHemresa", sender: self)
         }
     }
 }
