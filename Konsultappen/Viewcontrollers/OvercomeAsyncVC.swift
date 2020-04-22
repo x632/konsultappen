@@ -24,7 +24,7 @@ class OvercomeAsyncVC: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
-        //startar radera Timposts collection om kommit från tableview 1. Annars
+        //startar radera Timposts collection om kommit från tableview 1 - annars
         // error när man kommer andra vägen
         if kommitVanligaVagen != nil{
             super.viewDidLoad()
@@ -34,7 +34,6 @@ class OvercomeAsyncVC: UIViewController, UITextFieldDelegate {
             while index < max{
                 id = ("\(docID![index])")
                 let b = eraseCollection(ID: id)
-                //print (b)
                 index += 1
             }
         }
@@ -71,10 +70,8 @@ class OvercomeAsyncVC: UIViewController, UITextFieldDelegate {
                     
                     let datat = SparadDag(snapshot: document)
                     self.docIDArray.append(document.documentID)
-                    //själva objekten - skickas till showdata
                     self.minArray.append(datat)
-                    //arrayn med strängar - skickas till Showdata
-                    self.minSArray.append("\(datat.datum) Restid: \(datat.restTid) Arbetstid: \(datat.arbetadTid) Mil: \(String(format: "%.1f", datat.mil))")
+                    self.minSArray.append("\(datat.datum) \(datat.comment) Restid: \(datat.restTid) Arbetstid: \(datat.arbetadTid) Mil: \(String(format: "%.1f", datat.mil))")
                 }
                 
                 self.klar = true

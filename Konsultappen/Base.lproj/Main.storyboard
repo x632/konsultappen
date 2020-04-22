@@ -22,12 +22,23 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock-3179167_960_720 (kopia)-1" translatesAutoresizingMaskIntoConstraints="NO" id="Pkx-l4-X4B">
-                                <rect key="frame" x="0.0" y="493" width="414.00000000000011" height="333"/>
+                                <rect key="frame" x="0.0" y="493" width="414" height="333"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="414" id="GLz-AL-Jd8"/>
                                     <constraint firstAttribute="height" constant="333" id="yjo-Lh-HZd"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G2m-lR-P5j">
+                                <rect key="frame" x="176" y="343" width="64" height="10"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Sign out">
+                                    <color key="titleColor" red="0.42508718369999998" green="0.22218161819999999" blue="0.75888770819999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="signOutTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CO7-Of-idy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.42508718369999998" green="0.22218161819999999" blue="0.75888770819999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
@@ -146,7 +157,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8SW-Lg-5QH">
-                                <rect key="frame" x="0.0" y="94" width="414" height="568"/>
+                                <rect key="frame" x="0.0" y="94" width="414" height="368"/>
                                 <color key="backgroundColor" red="0.42508718369999998" green="0.22218161819999999" blue="0.75888770819999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <color key="sectionIndexColor" red="0.97436398270000002" green="0.9705656171" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -175,7 +186,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wnU-uU-LpL">
-                                <rect key="frame" x="76.5" y="764" width="261" height="48"/>
+                                <rect key="frame" x="76.5" y="781" width="261" height="48"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="30"/>
                                 <state key="normal" title="Lagra dag" backgroundImage="Component 13 – 1">
                                     <color key="titleColor" red="0.28394839170000002" green="0.27284565570000002" blue="0.2727301419" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -184,24 +195,33 @@
                                     <action selector="sparaTapped:" destination="sJH-R8-F15" eventType="touchUpInside" id="DID-lb-atf"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Lägg till rubrik, kommentar" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nsk-mn-wY9">
+                                <rect key="frame" x="20" y="487" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.42508718369999998" green="0.22218161819999999" blue="0.75888770819999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="nl0-vq-t9F" firstAttribute="bottom" secondItem="8SW-Lg-5QH" secondAttribute="bottom" constant="200" id="H6B-TO-1we"/>
+                            <constraint firstItem="Nsk-mn-wY9" firstAttribute="leading" secondItem="nl0-vq-t9F" secondAttribute="leading" constant="20" id="5bP-X0-Z7w"/>
+                            <constraint firstItem="wnU-uU-LpL" firstAttribute="top" secondItem="Nsk-mn-wY9" secondAttribute="bottom" constant="260" id="Ack-we-I0Q"/>
+                            <constraint firstItem="nl0-vq-t9F" firstAttribute="bottom" secondItem="8SW-Lg-5QH" secondAttribute="bottom" constant="400" id="H6B-TO-1we"/>
                             <constraint firstItem="8SW-Lg-5QH" firstAttribute="top" secondItem="nl0-vq-t9F" secondAttribute="top" constant="50" id="HP4-QL-xBR"/>
-                            <constraint firstItem="nl0-vq-t9F" firstAttribute="bottom" secondItem="wnU-uU-LpL" secondAttribute="bottom" constant="50" id="JgJ-z9-BsL"/>
                             <constraint firstItem="8SW-Lg-5QH" firstAttribute="top" secondItem="R3L-YU-gXw" secondAttribute="bottom" id="RIm-je-EO0"/>
                             <constraint firstItem="wnU-uU-LpL" firstAttribute="centerX" secondItem="8MO-H6-FnH" secondAttribute="centerX" id="SeY-Mp-X4P"/>
                             <constraint firstItem="8SW-Lg-5QH" firstAttribute="trailing" secondItem="nl0-vq-t9F" secondAttribute="trailing" id="WGj-e8-3OR"/>
                             <constraint firstItem="R3L-YU-gXw" firstAttribute="top" secondItem="nl0-vq-t9F" secondAttribute="top" id="Y11-cE-lh3"/>
                             <constraint firstItem="R3L-YU-gXw" firstAttribute="leading" secondItem="nl0-vq-t9F" secondAttribute="leading" constant="20" id="c59-nU-X7h"/>
                             <constraint firstItem="8SW-Lg-5QH" firstAttribute="leading" secondItem="nl0-vq-t9F" secondAttribute="leading" id="coh-Y8-4OV"/>
+                            <constraint firstItem="nl0-vq-t9F" firstAttribute="trailing" secondItem="Nsk-mn-wY9" secondAttribute="trailing" constant="20" id="glI-RD-Dbx"/>
                             <constraint firstItem="R3L-YU-gXw" firstAttribute="trailing" secondItem="nl0-vq-t9F" secondAttribute="trailing" id="h1N-LX-eWD"/>
+                            <constraint firstItem="Nsk-mn-wY9" firstAttribute="top" secondItem="8SW-Lg-5QH" secondAttribute="bottom" constant="25" id="ho2-ya-MAA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nl0-vq-t9F"/>
                     </view>
                     <navigationItem key="navigationItem" id="NmP-Q5-JhV"/>
                     <connections>
+                        <outlet property="sComment" destination="Nsk-mn-wY9" id="5U4-IV-eBh"/>
                         <outlet property="titleLabel" destination="R3L-YU-gXw" id="1MA-Gr-8bD"/>
                         <segue destination="HRj-2n-l5n" kind="show" identifier="toOvercome" id="fPd-Kr-5Vp"/>
                     </connections>
@@ -638,14 +658,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.45000000000000001" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock-3179167_960_720 (kopia)-1" translatesAutoresizingMaskIntoConstraints="NO" id="5X2-BP-buh">
-                                <rect key="frame" x="0.0" y="493" width="414.00000000000011" height="333"/>
+                                <rect key="frame" x="0.0" y="493" width="414" height="333"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="333" id="7UP-cJ-cGp"/>
                                     <constraint firstAttribute="width" constant="414" id="met-Xs-qBA"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mV2-ii-LsQ">
-                                <rect key="frame" x="76.5" y="226.5" width="261" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mV2-ii-LsQ">
+                                <rect key="frame" x="-54" y="226.5" width="522" height="48"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="30"/>
                                 <state key="normal" title="Starta resa" backgroundImage="Component 13 – 1">
                                     <color key="titleColor" red="0.28394839170000002" green="0.27284565570000002" blue="0.2727301419" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -655,14 +675,14 @@
                                     <segue destination="93J-Ve-tLj" kind="show" identifier="toAvslutaResa" id="wCb-YB-mNO"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Välkommen!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xdV-oG-6JH">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Välkommen!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xdV-oG-6JH">
                                 <rect key="frame" x="0.0" y="86" width="414" height="50.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="43"/>
                                 <color key="textColor" red="0.97436398270000002" green="0.9705656171" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KZE-Vs-Tig">
-                                <rect key="frame" x="76.5" y="331" width="261" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KZE-Vs-Tig">
+                                <rect key="frame" x="-54" y="331" width="522" height="48"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="25"/>
                                 <state key="normal" title="Se sparade poster" backgroundImage="Component 13 – 1">
                                     <color key="titleColor" red="0.28394839170000002" green="0.27284565570000002" blue="0.2727301419" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -671,7 +691,7 @@
                                     <action selector="seSparadePosterTap:" destination="RDt-pc-Jqg" eventType="touchUpInside" id="FSz-gq-tZ5"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Det finns inga poster än!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EWh-Q5-4WH">
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Det finns inga poster än!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EWh-Q5-4WH">
                                 <rect key="frame" x="0.0" y="414" width="414" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.89960604906082153" green="0.051868267357349396" blue="0.08590669184923172" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -800,7 +820,7 @@
                                 <color key="textColor" red="0.97436398270000002" green="0.9705656171" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Appen har nu stannat tidräkningen som räknas in i faktureringen. Tryck på 'Avsluta paus' för att fortsätta arbetstidsräkningen" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sMV-W2-0fp">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Appen har nu stannat tidräkningen som räknas in i faktureringen. Tryck på 'Avsluta paus' för att fortsätta arbetstidräkningen" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sMV-W2-0fp">
                                 <rect key="frame" x="47" y="146.5" width="320" height="125"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" id="4Cj-E2-O2P"/>
@@ -889,7 +909,7 @@
                                     <constraint firstAttribute="width" priority="750" constant="330" id="keh-I3-kNC"/>
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="Vla-tM-7mr"/>
-                                <string key="text"> Appen tar tid på resan tills du trycker på 'Framme'. Milersättning räknas ut med hjälp av GPS enligt angiven taxa. När du trycker 'Framme' påbörjas automatiskt arbetsdagens tidräkning.</string>
+                                <string key="text"> Appen tar tid på resan tills du trycker på 'Framme'. Milersättning räknas ut med hjälp av GPS. När du trycker 'Framme' påbörjas automatiskt arbetsdagens tidräkning.</string>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="19"/>
                                 <color key="textColor" red="0.97436398270000002" green="0.9705656171" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -937,11 +957,11 @@
         <image name="clock-3179167_960_720 (kopia)-1" width="412" height="274"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="eRg-Sa-Om3"/>
+        <segue reference="wCb-YB-mNO"/>
         <segue reference="SMT-X3-y9C"/>
         <segue reference="bfE-2w-H1K"/>
         <segue reference="deg-q0-NbG"/>
-        <segue reference="8CK-Ot-md7"/>
+        <segue reference="SMQ-0y-K2G"/>
         <segue reference="G86-cU-FYn"/>
         <segue reference="Dip-t2-kvd"/>
     </inferredMetricsTieBreakers>

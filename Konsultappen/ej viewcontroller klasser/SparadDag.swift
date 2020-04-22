@@ -16,13 +16,15 @@ struct SparadDag {
     var restTid : Int
     var timeStamp : Date
     var mil : Double
+    var comment : String
     
-    init(datum : String, arbetadTid: Int, restTid : Int, timeStamp : Date, mil: Double){
+    init(datum : String, arbetadTid: Int, restTid : Int, timeStamp : Date, mil: Double, comment : String){
         self.datum = datum
         self.arbetadTid = arbetadTid
         self.restTid = restTid
         self.timeStamp = Date()
         self.mil = mil
+        self.comment = comment
     }
     // en contructor som tar in ett firestore document och skapar ett object utifrån det
     init(snapshot: QueryDocumentSnapshot) {
@@ -33,6 +35,7 @@ struct SparadDag {
         let tS = snapshotValue["timeStamp"] as! Timestamp
         timeStamp = tS.dateValue()
         mil = snapshotValue["mil"] as! Double
+        comment = snapshotValue["comment"] as! String
     }
     
 
@@ -42,7 +45,8 @@ struct SparadDag {
             "arbetadTid" : arbetadTid,
             "restTid" : restTid,
             "timeStamp" : Timestamp(date:Date()),
-            "mil" : mil]
+            "mil" : mil,
+            "comment" : comment]
             
       }
 }

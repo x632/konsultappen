@@ -94,10 +94,10 @@ class AvslutaResa: UIViewController,CLLocationManagerDelegate {
     //skapar egen array med CLLocations. Räknar ut distans mellan punkterna
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if locations.last != nil {
-           // if bugfix == false && totalDistance != 0.0{
-           //     totalDistance = 0.0
-           //     bugfix = true
-           // }
+           if bugfix == false && totalDistance != 0.0{
+                totalDistance = 0.0
+                bugfix = true
+            }
             Locations.append(locations.last!)
             index += 1
             if index == 0 {

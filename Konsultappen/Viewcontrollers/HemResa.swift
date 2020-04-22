@@ -56,10 +56,10 @@ class HemResa: UIViewController, CLLocationManagerDelegate {
     // distansberäkningen
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
          if locations.last != nil {
-            //if bugfix == false && totalDistance != 0.0{
-            //               totalDistance = 0.0
-            //               bugfix = true
-            //}
+            if bugfix == false && totalDistance != 0.0{
+                           totalDistance = 0.0
+                           bugfix = true
+            }
              
              Locations.append(locations.last!)
              index += 1
@@ -127,7 +127,6 @@ class HemResa: UIViewController, CLLocationManagerDelegate {
                     self.docID.append(document.documentID)
                 
                 }
-                //print(self.testArray)
                 self.performSegue(withIdentifier: "toTableview", sender: self)
            
             }
@@ -154,11 +153,4 @@ class HemResa: UIViewController, CLLocationManagerDelegate {
             }
         }
     }
-    
-
-   
-        
-        
-        
-    
 }

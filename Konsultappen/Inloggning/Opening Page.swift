@@ -25,6 +25,19 @@ class OpeningPage: UIViewController {
         getFromFirestore()
     }
     
+    @IBAction func signOutTapped(_ sender: UIButton) {
+        if let user = self.auth.currentUser {
+            print(user.email!, "has signed out")
+
+            do {
+                try auth.signOut()
+            } catch {
+                print("Error signing out")
+            }
+        }
+    }
+ 
+    
 
     // Kollar om användaren är inloggad - i så fall går direkt till start
     // annars gå till registrering
@@ -42,7 +55,7 @@ class OpeningPage: UIViewController {
     }
     
     // Kolla först att det inte har avslutats mitt i..
-    // om så är fallet så skickas användaren dit där han slutade
+    // om så är fallet så skickas användaren dit där hen slutade
     func getFromFirestore() {
         auth = Auth.auth()
         let db = Firestore.firestore()

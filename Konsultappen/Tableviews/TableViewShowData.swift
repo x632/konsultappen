@@ -24,13 +24,13 @@ class TableViewShowData: UIViewController, UITableViewDataSource, UITableViewDel
     var docIDArray : [String]!
     var selectArray : [Bool] = []
     
-
+    
     @IBOutlet weak var ArbetadeTimmar: UILabel!
     
     @IBOutlet weak var Restimmar: UILabel!
     
     @IBOutlet weak var Summa: UILabel!    
- 
+    
     @IBOutlet weak var Antalmil: UILabel!
     
     override func viewDidLoad() {
@@ -60,9 +60,9 @@ class TableViewShowData: UIViewController, UITableViewDataSource, UITableViewDel
         sammanlagdArbTid += (s.arbetadTid)
         sammanlagdResTid += (s.restTid)
         sammanlagdaMil += (s.mil)
-        print("direkt från uträkningen \(s.mil)")
+        //print("direkt från uträkningen \(s.mil)")
         selectArray[indexPath.row] = true
-      
+        
         c = (Double(sammanlagdResTid)) * ((Double(krPerResTim)/60))
         d = (Double(sammanlagdArbTid) * (Double(krPerArbTim)/60))
         g = sammanlagdaMil * (Double(krPerMil))
@@ -85,7 +85,7 @@ class TableViewShowData: UIViewController, UITableViewDataSource, UITableViewDel
         sammanlagdResTid -= (s.restTid)
         sammanlagdaMil -= (s.mil)
         selectArray[indexPath.row] = false
-       
+        
         c = (Double(sammanlagdResTid)) * ((Double(krPerResTim)/60))
         d = (Double(sammanlagdArbTid) * (Double(krPerArbTim)/60))
         g = sammanlagdaMil * (Double(krPerMil))
@@ -97,7 +97,7 @@ class TableViewShowData: UIViewController, UITableViewDataSource, UITableViewDel
         ArbetadeTimmar.text = a
         Restimmar.text = b
         Antalmil.text = "\(String(format: "%.1f", sammanlagdaMil))"
-    
+        
     }
     
     func makeHoursFormat(_ a: Int) -> String{
@@ -115,36 +115,33 @@ class TableViewShowData: UIViewController, UITableViewDataSource, UITableViewDel
         }
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-    if editingStyle == .delete {
-        minSArray.remove(at: indexPath.row)
-        minArray.remove(at: indexPath.row)
-        tableView.deleteRows(at: [indexPath], with: .fade)
-        
-        auth = Auth.auth()
-        guard let user = auth.currentUser else { return }
-        let db = Firestore.firestore()
-    db.collection("users").document(user.uid).collection("dagar").document(docIDArray[indexPath.row]).delete() { err in
-            if let err = err {
-                print("Error removing document: \(err)")
-            } else {
-                print("Document successfully removed from cloud")
-                self.docIDArray.remove(at:indexPath.row)
-                self.sammanlagdArbTid = 0
-                self.sammanlagdResTid = 0
-                self.sammanlagdaMil = 0.0
+        if editingStyle == .delete {
+            minSArray.remove(at: indexPath.row)
+            minArray.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            auth = Auth.auth()
+            guard let user = auth.currentUser else { return }
+            let db = Firestore.firestore()
+            db.collection("users").document(user.uid).collection("dagar").document(docIDArray[indexPath.row]).delete() { err in
+                if let err = err {
+                    print("Error removing document: \(err)")
+                } else {
+                    print("Document successfully removed from cloud")
+                    self.docIDArray.remove(at:indexPath.row)
+                    self.sammanlagdArbTid = 0
+                    self.sammanlagdResTid = 0
+                    self.sammanlagdaMil = 0.0
+                }
             }
-        }
-        
-        
-        
-        
+            
         }
     }
-
-   
+    
+    
     @IBAction func raderaTapped(_ sender: Any) {
-    
-    
+        
+        
     }
 }
 

@@ -28,6 +28,10 @@ class Tableview: UIViewController, UITableViewDataSource, UITableViewDelegate{
     var kommitVanligaVagen = true
     var sammanlagdMilersattning : Double = 0.0
     var mil : Double = 0.0
+    var comment = ""
+   
+    
+    @IBOutlet weak var sComment: UITextField!
     
     //sätter "bokmärke" (ej relevant just här efter att gps tillkommit, sparar på firestore
     //Går igenom testArrayn och skapar "listArrayn" för tableviewn
@@ -35,6 +39,7 @@ class Tableview: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+          self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
         
         auth = Auth.auth()
         let db = Firestore.firestore()
@@ -84,11 +89,9 @@ class Tableview: UIViewController, UITableViewDataSource, UITableViewDelegate{
         list.append("ARBETAD TID: \(b)min")
         let c = sammanlagdMilersattning/10000
         list.append("RESTA MIL: \(String(format: "%.2f", c))")
-        //let e = Double(round(10*c)/10)
-        // skapar mil i oavrundad form som sedan används i
-        // den sista tableviewn. Double hela vägen annars errer...!
+       //tar med denna till TVshowData
         mil = c
-        print ("mil i tableview klassen: \(mil)")
+        
     }
     func makeHoursFormat(_ a: Int) -> String{
         var timmar = 0
@@ -118,13 +121,16 @@ class Tableview: UIViewController, UITableViewDataSource, UITableViewDelegate{
         saveToFirestore()
     }
     
-    //spara dagen (arbtid, restid, mil) i Firestore
+    //spara dagen (arbtid, restid, mil, kommentar) i Firestore
     func saveToFirestore (){
+        if sComment.text! != ""{
+            comment = sComment.text!}
+        
         auth = Auth.auth()
         guard let user = auth.currentUser else { return }
         let db = Firestore.firestore()
         let itemRef = db.collection("users").document(user.uid).collection("dagar")
-        let sparadObj = SparadDag(datum : datum, arbetadTid : arbetadTid, restTid : restTid, timeStamp: Date(), mil: mil)
+        let sparadObj = SparadDag(datum : datum, arbetadTid : arbetadTid, restTid : restTid, timeStamp: Date(), mil: mil, comment : comment)
         itemRef.addDocument(data: sparadObj.toDict()) { err in
             if let err = err {
                 print("Error adding document: \(err)")
@@ -146,6 +152,13 @@ class Tableview: UIViewController, UITableViewDataSource, UITableViewDelegate{
     func showArray(){
         performSegue(withIdentifier: "toOvercome", sender: self)
     }
+    @objc func dismissKeyboard(){
+           sComment.resignFirstResponder()
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool{
+           sComment.resignFirstResponder()
+           return true
+       }
     
 }
 

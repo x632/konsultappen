@@ -29,10 +29,6 @@ class DagenIgang: UIViewController {
         getFromFirestore(b: false)
     }
     
-    
-    
-    
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
         createFirestoreTimePostObject()
